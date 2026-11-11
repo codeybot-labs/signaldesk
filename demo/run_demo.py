@@ -66,12 +66,13 @@ def main() -> int:
         print("ERROR: no leads from fixtures", file=sys.stderr)
         return 1
 
-    pick = leads[0]
-    # Prefer a hiring lead with a contact for a richer demo card
-    for lead in leads:
-        if lead.get("contact") and lead.get("signal_type") == "hiring":
-            pick = lead
-            break
+    # Prefer hiring leads with a contact for a richer demo card.
+    ranked = sorted(leads, key=lambda l: (
+        0 if (l.get("contact") and l.get("signal_type") == "hiring") else 1,
+        -(l.get("score") or 0),
+    ))
+    pick = ranked[0]
+    second = ranked[1] if len(ranked) > 1 else None
     print(f"== 4. Picked {pick['company']} ({pick['id']}) score={pick['score']} stage={pick['stage']}")
 
     drafted = _load(tools.signaldesk_draft({"lead_id": pick["id"]}))
@@ -79,6 +80,11 @@ def main() -> int:
         print("ERROR drafting:", drafted, file=sys.stderr)
         return 1
     print("== 5. Draft subject:", drafted["lead"]["draft_subject"])
+
+    if second and second["id"] != pick["id"]:
+        extra = _load(tools.signaldesk_draft({"lead_id": second["id"]}))
+        if extra.get("ok"):
+            print(f"== 5b. Also drafted {extra['lead']['company']} (leave unapproved for the video Approve click)")
 
     approved = _load(tools.signaldesk_approve({"lead_id": pick["id"]}))
     if not approved.get("ok"):
@@ -110,7 +116,7 @@ def main() -> int:
         encoding="utf-8",
     )
     print("Done. Open the board with:")
-    print(f"  python3 -m http.server 8765 --directory {out_dir}")
+    print("  python3 demo/serve_demo.py")
     print("  then visit http://127.0.0.1:8765/board.html")
     return 0
 

@@ -8,7 +8,7 @@ This PR adds `plugin-catalog/signaldesk.yaml` only. Pin `sha` to the 40-characte
 
 SignalDesk is a draft-first lead desk for founders and marketers. It scans public hiring and launch signals (HN Who is hiring, YC hiring via yc-oss, Show HN, new YC companies), scores them against a user-defined ICP with visible reasons, drafts outreach, and never sends without in-plugin approval. A `pre_tool_call` hook fail-closes send-like tools during cron/unattended runs.
 
-Surfaces: 11 `signaldesk_*` tools, `pre_tool_call` hook, `/signaldesk` slash command, a weekday “catch-up” automation blueprint, SQLite pipeline, and a standalone HTML board. No Desktop SDK package in 0.1.0 (the HTML board is the review UI).
+Surfaces: 11 `signaldesk_*` tools, `pre_tool_call` hook, `/signaldesk` slash command, a weekday “catch-up” automation blueprint, SQLite pipeline, an interactive HTML board, and a Hermes Desktop page (`desktop/plugin.js` + `dashboard/plugin_api.py`). The Desktop page was validated (`desktop surface` passed) but not clicked through in a live Desktop window on the build machine.
 
 ## Rule 13 disclosures
 

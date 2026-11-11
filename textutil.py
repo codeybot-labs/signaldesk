@@ -13,13 +13,15 @@ SKIP_DOMAINS = frozenset({
     "news.ycombinator.com", "hn.algolia.com", "ycombinator.com", "www.ycombinator.com",
     "github.com", "gitlab.com", "linkedin.com", "www.linkedin.com", "twitter.com", "x.com",
     "docs.google.com", "google.com", "forms.gle", "bit.ly", "youtu.be", "youtube.com",
-    "notion.so", "medium.com", "substack.com", "reddit.com", "www.reddit.com",
+    "notion.so", "notion.site", "medium.com", "substack.com", "reddit.com", "www.reddit.com",
     "greenhouse.io", "lever.co", "ashbyhq.com", "myworkdayjobs.com", "workable.com",
     "angel.co", "wellfound.com", "indeed.com", "glassdoor.com",
+    "arxiv.org", "grnh.se", "lnkd.in", "t.co", "goo.gl", "tinyurl.com",
+    "calendly.com", "cal.com", "zoom.us", "schema.org", "w3.org",
 })
 
 JOB_BOARD_HOST_RE = re.compile(
-    r"(greenhouse\.io|lever\.co|ashbyhq\.com|myworkdayjobs\.com|workable\.com|"
+    r"(greenhouse\.io|lever\.co|ashbyhq\.com|myworkdayjobs\.com|workable\.com|grnh\.se|"
     r"jobs\.(?:eu|us)\.lever\.co|boards\.greenhouse\.io)$",
     re.I,
 )
@@ -29,9 +31,12 @@ def strip_html(text: str) -> str:
     if not text:
         return ""
     text = unescape(text)
+    # HN comments often use bare <p> with no closing tag.
     text = re.sub(r"(?i)<br\s*/?>", "\n", text)
     text = re.sub(r"(?i)</p>", "\n", text)
-    text = re.sub(r"(?i)<p[^>]*>", "", text)
+    text = re.sub(r"(?i)<p[^>]*>", "\n", text)
+    text = re.sub(r"(?i)</li>", "\n", text)
+    text = re.sub(r"(?i)<li[^>]*>", "• ", text)
     text = re.sub(r"(?i)<a\s+[^>]*href=['\"]([^'\"]+)['\"][^>]*>", r"\1 ", text)
     text = re.sub(r"<[^>]+>", "", text)
     text = unescape(text)

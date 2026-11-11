@@ -48,3 +48,37 @@ def test_score_keyword_and_exclusion():
     score2, reasons2 = score_lead(bad, icp2)
     assert score2 < 35
     assert any("excluded" in r for r in reasons2)
+
+
+def test_paragraph_does_not_leak_into_quote():
+    text = (
+        "Shepherd (Series B) | ONSITE | San Francisco, CA"
+        "<p>At Shepherd, we&#x27;re pursuing the most ambitious technical vision."
+    )
+    parsed = parse_comment(text)
+    assert parsed is not None
+    assert parsed["company"] == "Shepherd"
+    assert parsed["role"] == ""  # ONSITE is logistics, not a title
+    assert "San Francisco" in parsed["location"]
+    assert "ambitious" not in parsed["signal_quote"]
+    assert "https://" not in parsed["signal_quote"]
+
+
+def test_simple_analytics_quote_stays_on_the_header():
+    text = (
+        "Simple Analytics | DevOps Engineer | REMOTE (worldwide, any timezone) | Full-time | "
+        '<a href="https://www.simpleanalytics.com/jobs/devops">https://www.simpleanalytics.com/jobs/devops</a>'
+        "<p>Hi HN, we are hiring. Contact us at jobs@simpleanalytics.com</p>"
+    )
+    parsed = parse_comment(text)
+    assert parsed["signal_quote"].startswith("Simple Analytics | DevOps Engineer")
+    assert "Hi HN" not in parsed["signal_quote"]
+    assert "https://" not in parsed["signal_quote"]
+
+
+def test_company_url_in_parens_is_stripped():
+    text = "Curiosity (https://curiosity.ai) | Forward Deployed Engineer | Toulouse, France | ONSITE<p>Hello"
+    parsed = parse_comment(text)
+    assert parsed["company"] == "Curiosity"
+    assert "Forward Deployed" in parsed["role"]
+    assert "(" not in parsed["company"]

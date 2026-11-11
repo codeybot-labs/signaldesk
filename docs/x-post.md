@@ -1,25 +1,19 @@
-# Draft X post for the <90s demo
+# Draft X post
 
-Keep under a short post + video. Tag @NousResearch. Post only after the catalog PR is open and the video is final.
-
----
-
-SignalDesk is my entry for the @NousResearch Hermes Agent plugin hackathon.
-
-It watches public hiring and launch signals — HN Who is hiring, YC, Show HN — scores them against your ICP, and drafts outreach.
-
-Nothing sends until you approve it. Cron fail-closes.
-
-github.com/codeybot-labs/signaldesk
+Post from @monolithic_labs once the catalog PR is open and the <90s video is ready. Tag @NousResearch. Keep it short. No Token Ledger, no hype-y phrasing.
 
 ---
 
-Alt (if you want a tighter hook):
+built a hermes plugin for the @NousResearch hackathon: SignalDesk.
 
-Most AI SDR tools email people for you. SignalDesk doesn't.
+it watches public hiring and launch posts, scores them against your ICP, and drafts the email. nothing goes out until you hit approve.
 
-Public hiring + launch signals → a scored pipeline → a draft you approve.
+https://github.com/codeybot-labs/signaldesk
 
-Built as a Hermes plugin for the @NousResearch hackathon.
+---
 
-github.com/codeybot-labs/signaldesk
+Alt, even shorter:
+
+SignalDesk is my @NousResearch hermes plugin for the hackathon. public hiring/launch posts → a scored board → a draft you approve. it doesn't send mail on its own.
+
+https://github.com/codeybot-labs/signaldesk

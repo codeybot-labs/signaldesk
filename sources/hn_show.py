@@ -62,10 +62,9 @@ class HNShowSource:
         object_id = str(raw.get("objectID") or raw.get("story_id") or "")
         source_url = f"https://news.ycombinator.com/item?id={object_id}" if object_id else url
         story_text = strip_html(raw.get("story_text") or "")
-        quote = rest or story_text
-        if story_text and rest and rest not in story_text:
-            quote = f"{rest} — {story_text}"
-        quote = (quote or title)[:280]
+        # Keep the quote on the title line. Body text often starts with "Hi HN".
+        quote = (rest or title or story_text).strip()
+        quote = (quote or title)[:160]
         return RawSignal(
             company=company,
             domain=domain,

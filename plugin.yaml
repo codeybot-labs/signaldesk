@@ -32,3 +32,9 @@ config_schema:
     type: str
     default: ""
     description: "Optional public booking URL included in drafts."
+
+optional_env:
+  - name: PRODUCTHUNT_TOKEN
+    description: "Optional Product Hunt GraphQL v2 token. Leave unset to keep the Product Hunt source disabled. Product Hunt API terms restrict commercial use without permission."
+    password: true
+

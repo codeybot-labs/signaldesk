@@ -3,7 +3,7 @@ title: SignalDesk
 repo: https://github.com/codeybot-labs/signaldesk
 sha: "REPLACE_WITH_40_CHAR_COMMIT_SHA_AFTER_PUSH"
 version: "0.1.0"
-description: "Draft-first lead desk for founders and marketers: scan public hiring and launch signals (HN Who is hiring, YC hiring, Show HN, new YC companies), score them against your ICP, draft outreach, and never send without in-plugin approval. Cron and unattended runs fail closed. Disclosure — fetches public JSON from Algolia HN Search and the yc-oss static API; optional DNS MX lookups (UDP only, no SMTP probing); lead data lives in $HERMES_HOME/plugin-data/signaldesk/; drafts use the host LLM when available otherwise a local template; SignalDesk never transmits email (it writes a local .eml / mailto after approval, or the user may use a Hermes email tool which the pre_tool_call hook blocks unless the lead is approved and the session is interactive); no telemetry; no third-party mail APIs; no paid data providers required."
+description: "Draft-first lead desk for founders and marketers: scan public hiring and launch signals (HN Who is hiring, YC hiring, Show HN, new YC companies; optional Product Hunt with a token), score them against your ICP, draft outreach, and never send without in-plugin approval. Cron and unattended runs fail closed. Disclosure — fetches public JSON from Algolia HN Search and the yc-oss static API; optional DNS MX lookups (UDP only, no SMTP probing); optional Product Hunt GraphQL v2 only when PRODUCTHUNT_TOKEN is set (optional_env / secret_scope, not required to install; Product Hunt API terms restrict commercial use without permission); lead data lives in $HERMES_HOME/plugin-data/signaldesk/; drafts use the host LLM when available otherwise a local template; SignalDesk never transmits email (it writes a local .eml / mailto after approval, or the user may use a Hermes email tool which the pre_tool_call hook blocks unless the lead is approved and the session is interactive); no telemetry; no third-party mail APIs; no paid data providers required."
 maintainer: codeybot-labs
 tier: community
 category: automation
@@ -11,10 +11,14 @@ requires_hermes: ">=0.22.0"
 docs_url: https://github.com/codeybot-labs/signaldesk#readme
 readme: true
 platforms: []
+image: ""
+screenshots: []
 known_issues:
-  - "Product Hunt and BetaList sources are not shipped in 0.1.0; the source registry is ready for a later key-gated addition."
+  - "The Hermes Desktop board page (desktop/plugin.js) passes catalog desktop-surface validation but was not clicked through in a live Desktop window on the build machine. The interactive HTML board is the supported demo and review UI."
+  - "Product Hunt is optional and stays off unless PRODUCTHUNT_TOKEN is set. Product Hunt API terms restrict commercial use without permission."
+  - "BetaList is not included; their site terms are not a clean fit for a keyless built-in source."
   - "Show HN posts hosted only on GitHub often have no company inbox, so those leads are scored but usually have no contact."
-  - "Offline demo and tests use bundled fixtures; a live scan needs outbound HTTPS to Algolia and yc-oss.github.io."
+  - "A live scan needs outbound HTTPS to Algolia and yc-oss.github.io. Each source is capped so a large hiring dump does not flood the board. The offline demo uses bundled fixtures."
 capabilities:
   provides_tools:
     - signaldesk_set_icp

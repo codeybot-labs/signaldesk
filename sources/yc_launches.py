@@ -8,7 +8,7 @@ from httputil import get_json
 from sources.base import RawSignal, SourceMeta
 from textutil import domain_from_url, is_skip_domain
 
-CHANGES_URL = "https://yc-oss.github.io/api/companies/changes/latest.json"
+CHANGES_URL = "https://yc-oss.github.io/api/changes/latest.json"
 
 
 class YCLaunchesSource:
