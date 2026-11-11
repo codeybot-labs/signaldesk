@@ -1,0 +1,592 @@
+{
+"city": "Zürich, Switzerland",
+"osm_key": "amenity",
+"osm_value": "cafe",
+"bbox": [
+47.3202184,
+8.4480182,
+47.434665,
+8.6254529
+],
+"fetched_at": "2026-11-11",
+"source": "Overpass API (overpass.osm.ch), query: [out:json][timeout:25];(node[\"amenity\"=\"cafe\"][\"name\"](47.32022,8.44802,47.43467,8.62545);way[\"amenity\"=\"cafe\"][\"name\"](47.32022,8.44802,47.43467,8.62545););out center tags 40;",
+"license": "ODbL 1.0",
+"attribution": "© OpenStreetMap contributors, ODbL 1.0 (https://www.openstreetmap.org/copyright)",
+"elements": [
+{
+"type": "node",
+"id": 73653071,
+"lat": 47.3439521,
+"lon": 8.5297852,
+"tags": {
+"addr:housenumber": "44",
+"addr:street": "Albisstrasse",
+"amenity": "cafe",
+"email": "hello@moanacafebar.ch",
+"name": "moana",
+"opening_hours": "Mo-Fr 08:00-22:00; Su 09:00-22:00; Sa 08:00-00:00",
+"phone": "+41 43 399 00 19",
+"website": "http://www.moanacafebar.ch/"
+}
+},
+{
+"type": "node",
+"id": 104300787,
+"lat": 47.3765101,
+"lon": 8.511279,
+"tags": {
+"addr:housenumber": "275",
+"addr:street": "Zurlindenstrasse",
+"amenity": "cafe",
+"name": "Onno",
+"opening_hours": "Tu-Fr 08:00-23:00; Sa,Su 09:00-19:00",
+"shop": "deli",
+"website": "https://www.onno-onno.ch/"
+}
+},
+{
+"type": "node",
+"id": 105460220,
+"lat": 47.3692939,
+"lon": 8.5392157,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "21",
+"addr:postcode": "8001",
+"addr:street": "Bahnhofstrasse",
+"amenity": "cafe",
+"name": "Sprüngli Café-Bar",
+"opening_hours": "Mo-Fr 07:00-18:30; Sa 09:00-18:00; Su 09:30-17:30"
+}
+},
+{
+"type": "node",
+"id": 250554254,
+"lat": 47.3845988,
+"lon": 8.4772959,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "281",
+"addr:postcode": "8048",
+"addr:street": "Rautistrasse",
+"amenity": "cafe",
+"name": "Kafi Öfeli",
+"opening_hours": "Mo-Fr 08:00-18:00; Su,PH 09:00-18:00",
+"website": "https://www.kafi-oefeli.ch/"
+}
+},
+{
+"type": "node",
+"id": 267879346,
+"lat": 47.3625839,
+"lon": 8.5191037,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "29",
+"addr:postcode": "8045",
+"addr:street": "Eichstrasse",
+"amenity": "cafe",
+"cuisine": "sandwich;pastry;dessert",
+"name": "Walter Buchmann",
+"opening_hours": "Mo-Fr 06:00-18:00; Sa-Su 07:00-17:00",
+"shop": "bakery",
+"website": "https://www.walterbuchmann.ch/binz"
+}
+},
+{
+"type": "node",
+"id": 268488025,
+"lat": 47.3617349,
+"lon": 8.5485487,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "6",
+"addr:postcode": "8008",
+"addr:street": "Färberstrasse",
+"amenity": "cafe",
+"name": "Cafe Black",
+"opening_hours": "Mo-Tu 08:00-15:00; We-Fr 08:00-21:00; PH off",
+"website": "https://black1966.ch/"
+}
+},
+{
+"type": "node",
+"id": 270795412,
+"lat": 47.364072,
+"lon": 8.5606338,
+"tags": {
+"amenity": "cafe",
+"name": "Villa Böcklin"
+}
+},
+{
+"type": "node",
+"id": 270795664,
+"lat": 47.3629817,
+"lon": 8.5594513,
+"tags": {
+"amenity": "cafe",
+"name": "Alters- & Pflegewohnheim Neumünster"
+}
+},
+{
+"type": "node",
+"id": 270799257,
+"lat": 47.3695588,
+"lon": 8.5540543,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "33",
+"addr:postcode": "8032",
+"addr:street": "Hottingerstrasse",
+"amenity": "cafe",
+"cuisine": "breakfast;coffee_shop;sandwich;cake;salad;pastry;bakery",
+"name": "Café Berner",
+"opening_hours": "Mo-Fr 07:00-17:00; Sa off; Su 08:00-13:00",
+"phone": "+41 44 251 51 06",
+"shop": "bakery",
+"website": "https://www.walterbuchmann.ch/berner"
+}
+},
+{
+"type": "node",
+"id": 270799706,
+"lat": 47.3639923,
+"lon": 8.5517729,
+"tags": {
+"amenity": "cafe",
+"name": "Mühlebach",
+"opening_hours": "Mo-Fr 06:00-18:00; Sa 07:30-14:30"
+}
+},
+{
+"type": "node",
+"id": 270800553,
+"lat": 47.3686693,
+"lon": 8.545625,
+"tags": {
+"amenity": "cafe",
+"name": "Oberdorf Beck",
+"opening_hours": "Tu-Fr 08:00-15:00",
+"phone": "+41 44 252 49 19"
+}
+},
+{
+"type": "node",
+"id": 270803095,
+"lat": 47.3708689,
+"lon": 8.5418241,
+"tags": {
+"amenity": "cafe",
+"name": "Conditorei schober"
+}
+},
+{
+"type": "node",
+"id": 271222013,
+"lat": 47.3515572,
+"lon": 8.5778661,
+"tags": {
+"amenity": "cafe",
+"name": "Pflegezentrum Rehalp"
+}
+},
+{
+"type": "node",
+"id": 271224408,
+"lat": 47.3583262,
+"lon": 8.5707217,
+"tags": {
+"amenity": "cafe",
+"contact:phone": "+41 79 597 87 00",
+"name": "Cafeteria",
+"opening_hours": "Mo-Fr 09:30-17:00; Sa off; Su 14:00-17:00 \"1x im Monat Sonntagsbruch, Daten siehe www.qth.ch\"",
+"website": "https://www.qth.ch/cafeteria/"
+}
+},
+{
+"type": "node",
+"id": 271225393,
+"lat": 47.3608126,
+"lon": 8.5659833,
+"tags": {
+"amenity": "cafe",
+"name": "Stiftung Perla Park"
+}
+},
+{
+"type": "node",
+"id": 271411938,
+"lat": 47.3736638,
+"lon": 8.5392193,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "48",
+"addr:postcode": "8001",
+"addr:street": "Rennweg",
+"amenity": "cafe",
+"cuisine": "coffee_shop",
+"name": "Starbucks",
+"opening_hours": "Mo-Fr 07:30-19:00; Sa 08:00-19:30; Su 10:30-18:00",
+"website": "https://www.starbucks.ch/"
+}
+},
+{
+"type": "node",
+"id": 272354078,
+"lat": 47.3670907,
+"lon": 8.5451486,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "1",
+"addr:postcode": "8001",
+"addr:street": "Bellevueplatz",
+"amenity": "cafe",
+"name": "Belcafe",
+"opening_hours": "Mo-Fr 06:00-23:00; Sa,Su 07:00-23:00",
+"website": "https://www.belcafe.ch/"
+}
+},
+{
+"type": "node",
+"id": 273502894,
+"lat": 47.3601706,
+"lon": 8.550781,
+"tags": {
+"amenity": "cafe",
+"name": "Valentino",
+"website": "https://www.valentino-pizza-pasta.ch/"
+}
+},
+{
+"type": "node",
+"id": 276483741,
+"lat": 47.3661724,
+"lon": 8.5469837,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "8",
+"addr:postcode": "8001",
+"addr:street": "Theaterstrasse",
+"amenity": "cafe",
+"cuisine": "coffee_shop",
+"name": "Starbucks",
+"opening_hours": "Mo-Fr 09:00-20:00; Sa 09:00-18:00",
+"website": "https://www.starbucks.ch/"
+}
+},
+{
+"type": "node",
+"id": 283458329,
+"lat": 47.3752928,
+"lon": 8.538374,
+"tags": {
+"amenity": "cafe",
+"name": "Café Felix"
+}
+},
+{
+"type": "node",
+"id": 283458330,
+"lat": 47.3763896,
+"lon": 8.539384,
+"tags": {
+"amenity": "cafe",
+"name": "Piazzetta",
+"opening_hours": "Mo-Su 10:00-20:00"
+}
+},
+{
+"type": "node",
+"id": 301815443,
+"lat": 47.3738054,
+"lon": 8.5278402,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "18",
+"addr:postcode": "8004",
+"addr:street": "Kanzleistrasse",
+"amenity": "cafe",
+"name": "St. Jakob Beck",
+"opening_hours": "Mo-Fr 07:00-18:30; Sa 08:00-16:00",
+"shop": "bakery",
+"website": "https://www.st-jakob.ch/de/kontakt/kanzleistrasse.html"
+}
+},
+{
+"type": "node",
+"id": 305017101,
+"lat": 47.3647025,
+"lon": 8.5317713,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "19",
+"addr:postcode": "8002",
+"addr:street": "Seestrasse",
+"amenity": "cafe",
+"cuisine": "coffee_shop",
+"name": "Starbucks",
+"opening_hours": "Mo-Fr 06:30-20:00; Sa 07:30-19:00; Su 08:00-20:00",
+"website": "https://www.starbucks.ch/"
+}
+},
+{
+"type": "node",
+"id": 306480499,
+"lat": 47.3696993,
+"lon": 8.5389136,
+"tags": {
+"amenity": "cafe",
+"name": "Juni",
+"opening_hours": "Mo-Fr 06:30-17:00; Sa 08:00-17:00; Su 10:00-17:00",
+"website": "https://www.juni-zurich.ch/"
+}
+},
+{
+"type": "node",
+"id": 317216403,
+"lat": 47.4138889,
+"lon": 8.4774567,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "40",
+"addr:postcode": "8049",
+"addr:street": "Rütihofstrasse",
+"amenity": "cafe",
+"email": "info@cabare.ch",
+"name": "CaBaRe",
+"opening_hours": "Mo off, Tu-Su 08:00-14:00, Tu-Th 17:00-20:00, Fr,Sa 17:00-22:00",
+"phone": "+41 44 558 80 80",
+"website": "https://cabare.ch/"
+}
+},
+{
+"type": "node",
+"id": 317768650,
+"lat": 47.3765801,
+"lon": 8.5441952,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "144",
+"addr:postcode": "8001",
+"addr:street": "Limmatquai",
+"amenity": "cafe",
+"cuisine": "coffee_shop",
+"name": "Starbucks",
+"opening_hours": "Mo-Th 06:30-20:30; Fr 06:30-21:00; Sa 07:00-21:00; Su,PH 07:00-20:30",
+"website": "https://www.starbucks.ch/"
+}
+},
+{
+"type": "node",
+"id": 321364221,
+"lat": 47.3759249,
+"lon": 8.5466398,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "34",
+"addr:postcode": "8092",
+"addr:street": "Leonhardstrasse",
+"amenity": "cafe",
+"name": "bQm Kulturcafé & Bar",
+"opening_hours": "Mo-Fr 13:00-23:00; Sa,Su,PH off",
+"phone": "+41 44 632 75 03",
+"website": "https://www.bqm-bar.ch/"
+}
+},
+{
+"type": "node",
+"id": 321364282,
+"lat": 47.3773953,
+"lon": 8.5478673,
+"tags": {
+"addr:street": "Tannenstrasse",
+"amenity": "cafe",
+"name": "Tannenbar",
+"opening_hours": "Mo-Fr 07:00-17:00",
+"phone": "+41 44 632 62 55",
+"website": "https://ethz.ch/de/campus/erleben/gastronomie-und-einkaufen/gastronomie/restaurants-und-cafeterias/zentrum/tannenbar.html"
+}
+},
+{
+"type": "node",
+"id": 331179800,
+"lat": 47.3720795,
+"lon": 8.5426076,
+"tags": {
+"addr:housenumber": "61",
+"addr:street": "Limmatquai",
+"amenity": "cafe",
+"email": "info@rathauscafe.ch",
+"name": "Rathaus-Café",
+"opening_hours": "Mo-We 07:30-22:00; Th,Fr 07:30-23:00; Sa 10:30-23:00; Su 10:30-19:00",
+"phone": "+41 44 261 07 70",
+"website": "https://www.rathauscafe.ch/"
+}
+},
+{
+"type": "node",
+"id": 343068234,
+"lat": 47.3730817,
+"lon": 8.5355865,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "35",
+"addr:postcode": "8001",
+"addr:street": "Uraniastrasse",
+"amenity": "cafe",
+"name": "Caffé Handelshof",
+"opening_hours": "Mo-Fr 07:00-21:00; Sa 08:00-19:00; PH off",
+"website": "https://handelshof.ch/"
+}
+},
+{
+"type": "node",
+"id": 343347885,
+"lat": 47.372316,
+"lon": 8.5429593,
+"tags": {
+"addr:housenumber": "66",
+"addr:street": "Limmatquai",
+"amenity": "cafe",
+"name": "Gran Café Motta",
+"opening_hours": "Mo-Th 07:30-21:00; Fr 07:30-22:00; Sa 08:00-22:00; Su 08:00-21:00"
+}
+},
+{
+"type": "node",
+"id": 358919273,
+"lat": 47.3704696,
+"lon": 8.5488873,
+"tags": {
+"amenity": "cafe",
+"name": "Mops",
+"opening_hours": "Mo-Fr 07:00-17:00; Sa 08:00-17:00; Su 09:00-17:00"
+}
+},
+{
+"type": "node",
+"id": 364410129,
+"lat": 47.3713351,
+"lon": 8.5163363,
+"tags": {
+"amenity": "cafe",
+"name": "Plüsch",
+"opening_hours": "Mo-Th 08:00-24:00, Fr 08:00-01:00, Sa 09:00-01:00, Su 10:00-18:30",
+"phone": "+41 43 810 16 26",
+"website": "https://www.cafe-pluesch.ch/"
+}
+},
+{
+"type": "node",
+"id": 370657577,
+"lat": 47.3683702,
+"lon": 8.5605979,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "5",
+"addr:postcode": "8032",
+"addr:street": "Römerhofplatz",
+"amenity": "cafe",
+"cuisine": "breakfast;coffee_shop",
+"email": "guestservices@cafetartines.ch",
+"name": "Café Tartines",
+"opening_hours": "Mo-Su 07:30-19:00",
+"website": "https://www.cafetartines.ch/"
+}
+},
+{
+"type": "node",
+"id": 370822646,
+"lat": 47.3763302,
+"lon": 8.5440373,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "90",
+"addr:postcode": "8001",
+"addr:street": "Niederdorfstrasse",
+"amenity": "cafe",
+"name": "Schurter",
+"opening_hours": "Mo-Fr 07:00-18:00; Sa 09:00-16:00; Su,PH off",
+"website": "https://jung.ag/zuercherspezialitaeten/"
+}
+},
+{
+"type": "node",
+"id": 370843777,
+"lat": 47.3714893,
+"lon": 8.5443699,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "4",
+"addr:postcode": "8001",
+"addr:street": "Napfgasse",
+"amenity": "cafe",
+"cuisine": "cake",
+"email": "1842@arbeitskette.ch",
+"name": "Café & Conditorei 1842",
+"opening_hours": "Mo-Su 09:00-19:00",
+"phone": "+41 44 2515150",
+"shop": "bakery",
+"website": "https://www.cafe1842.ch"
+}
+},
+{
+"type": "node",
+"id": 370844160,
+"lat": 47.3712636,
+"lon": 8.5443044,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "20",
+"addr:postcode": "8001",
+"addr:street": "Münstergasse",
+"amenity": "cafe",
+"name": "Andorra",
+"opening_hours": "Mo-Th 17:00-24:00; Fr-Sa 16:00-02:00; Su 14:00-22:00",
+"website": "https://www.andorra.ch/"
+}
+},
+{
+"type": "node",
+"id": 387909747,
+"lat": 47.3912249,
+"lon": 8.5359972,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "57",
+"addr:postcode": "8037",
+"addr:street": "Kornhausstrasse",
+"amenity": "cafe",
+"name": "Kafischnaps",
+"opening_hours": "Mo-Th 08:00-24:00; Fr 08:00-25:00; Sa 09:00-25:00; Su 09:00-24:00",
+"website": "https://www.kafischnaps.ch/"
+}
+},
+{
+"type": "node",
+"id": 418745367,
+"lat": 47.4082566,
+"lon": 8.506734,
+"tags": {
+"amenity": "cafe",
+"name": "Alumni Lounge",
+"opening_hours": "Mo-Fr 08:00-19:00",
+"website": "https://alumnilounge.ch/"
+}
+},
+{
+"type": "node",
+"id": 432883512,
+"lat": 47.3893649,
+"lon": 8.5297423,
+"tags": {
+"addr:city": "Zürich",
+"amenity": "cafe",
+"name": "Bar & Kiosk Flussbad Unterer Letten",
+"opening_hours": "\"Varies by weather and date.\"",
+"shop": "kiosk"
+}
+}
+]
+}

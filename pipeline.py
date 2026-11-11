@@ -119,3 +119,71 @@ def scan(kind: str = "all", icp: Optional[ICP] = None, limit_per_source: int = 2
             report["errors"].append(f"{src.meta.id}: {exc}")
         report["sources"].append(row)
     return report
+
+
+def poi_to_raw(poi: dict[str, Any], area: str, attribution: str) -> RawSignal:
+    """One OpenStreetMap business -> RawSignal (signal_type 'local')."""
+    bits = [poi.get("business_type", "").replace("_", " ")]
+    if poi.get("address"):
+        bits.append(poi["address"])
+    if poi.get("opening_hours"):
+        bits.append("open " + poi["opening_hours"])
+    quote = f"{poi['name']}: " + " · ".join(b for b in bits if b) + " (OpenStreetMap)"
+    prov = {k: poi.get(k, "") for k in (
+        "lat", "lon", "business_type", "osm_tag", "website", "phone", "address",
+        "opening_hours", "osm_type", "osm_id", "osm_url")}
+    prov.update({"source": "osm_map", "area": area, "attribution": attribution,
+                 "license": "ODbL-1.0"})
+    return RawSignal(
+        company=poi["name"],
+        domain=poi.get("domain", ""),
+        signal_type="local",
+        signal_quote=quote,
+        source_url=poi.get("osm_url", ""),
+        source_id=f"osm:{poi.get('osm_type')}/{poi.get('osm_id')}",
+        contact=poi.get("email", ""),
+        role="",
+        location=poi.get("address") or area,
+        remote=None,
+        tags=["osm_map", poi.get("business_type", "")],
+        provenance=prov,
+    )
+
+
+def map_scan(city: str = "", business_type: str = "", bbox: Any = None, limit: int = 40,
+             icp: Optional[ICP] = None) -> dict[str, Any]:
+    """LocalLead Map: OSM businesses -> scored leads in the same store. Never sends."""
+    import geo  # local import keeps hiring/launch scans free of geo deps
+
+    icp = icp or load_icp()
+    result = geo.search(city=city, business_type=business_type, bbox=bbox, limit=limit)
+    area = result.get("city") or result.get("place") or ""
+    report: dict[str, Any] = {
+        "ok": True, "mode": result["mode"], "notes": result["notes"], "city": area,
+        "business_type": result["business_type"], "osm_tag": result["osm_tag"],
+        "bbox": result["bbox"], "attribution": result["attribution"],
+        "found": len(result["pois"]), "inserted": 0, "updated": 0, "qualified": 0,
+        "errors": [], "leads": [],
+    }
+    for poi in result["pois"]:
+        try:
+            lead = raw_to_lead(poi_to_raw(poi, area, result["attribution"]), icp)
+            if not lead:
+                continue
+            saved, action = upsert_new_lead(lead)
+            report["inserted" if action == "inserted" else "updated"] += 1
+            if saved.stage == "qualified" or saved.score >= int(icp.qualify_min_score or 0):
+                report["qualified"] += 1
+            prov = saved.provenance or {}
+            if any(row["id"] == saved.id for row in report["leads"]):
+                continue
+            report["leads"].append({
+                "id": saved.id, "company": saved.company, "score": saved.score, "stage": saved.stage,
+                "lat": prov.get("lat", poi["lat"]), "lon": prov.get("lon", poi["lon"]),
+                "website": poi.get("website", ""), "email": poi.get("email", ""),
+                "phone": poi.get("phone", ""), "address": poi.get("address", ""),
+                "osm_url": poi.get("osm_url", ""),
+            })
+        except Exception as exc:
+            report["errors"].append(f"{poi.get('name')}: {exc}")
+    return report

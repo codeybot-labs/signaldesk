@@ -14,6 +14,7 @@ from drafts import compose_draft
 from icp import load_icp, update_icp
 from models import SENDABLE_STAGES, STAGES, Lead
 from paths import exports_dir
+from pipeline import map_scan as run_map_scan
 from pipeline import scan as run_scan
 from sources import list_source_info
 from store import counts_by_stage, get_lead, list_leads, save_lead
@@ -76,6 +77,33 @@ def signaldesk_scan(args: dict, **kwargs) -> str:
         return json.dumps(report, default=str)
     except Exception as exc:
         return _err(f"Scan failed: {exc}")
+
+
+def signaldesk_map_scan(args: dict, **kwargs) -> str:
+    """LocalLead Map: businesses from OpenStreetMap (Overpass + Nominatim) -> scored leads."""
+    try:
+        args = args or {}
+        city = str(args.get("city") or "").strip()
+        btype = str(args.get("business_type") or args.get("type") or "").strip()
+        bbox = args.get("bbox")
+        if not btype:
+            return _err("business_type is required, e.g. 'dentist' or 'cafe'.")
+        if not city and not bbox:
+            return _err("Pass a city name or a bbox (south,west,north,east).")
+        report = run_map_scan(city=city, business_type=btype, bbox=bbox,
+                              limit=int(args.get("limit") or 40))
+        report["counts"] = counts_by_stage()
+        report["message"] = ("Leads saved and scored. Nothing was drafted or sent. "
+                             + report["attribution"])
+        try:
+            render_board()
+        except Exception:
+            pass
+        return json.dumps(report, default=str)
+    except ValueError as exc:
+        return _err(str(exc))
+    except Exception as exc:
+        return _err(f"Map scan failed: {exc}")
 
 
 def signaldesk_list(args: dict, **kwargs) -> str:
@@ -148,6 +176,10 @@ def signaldesk_mark(args: dict, **kwargs) -> str:
                 lead.sent_at = _now()
             if stage == "approved" and not lead.approved_at:
                 lead.approved_at = _now()
+        if args.get("followed_up"):
+            if lead.stage not in {"sent", "replied"}:
+                return _err("Only sent leads can be marked as followed up.", stage=lead.stage)
+            lead.last_followup_at = _now()
         if args.get("notes"):
             lead.notes = str(args["notes"])
         save_lead(lead)
@@ -166,7 +198,10 @@ def signaldesk_followups(args: dict, **kwargs) -> str:
         for lead in list_leads(stage="sent", limit=200):
             stamp = _parse_dt(lead.last_followup_at) or _parse_dt(lead.sent_at)
             if stamp is None or stamp <= cutoff:
-                due.append(_lead_public(lead))
+                row = _lead_public(lead)
+                row["days_since_contact"] = (
+                    int((datetime.now(timezone.utc) - stamp).total_seconds() // 86400) if stamp else None)
+                due.append(row)
             if len(due) >= limit:
                 break
         return _ok(ok=True, followup_days=days, count=len(due), leads=due)
@@ -183,15 +218,26 @@ def signaldesk_export_csv(args: dict, **kwargs) -> str:
         dest = exports_dir() / f"leads-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}.csv"
         fields = [
             "id", "company", "domain", "signal_type", "score", "stage", "role",
-            "location", "contact", "source_url", "signal_quote", "draft_subject",
+            "location", "contact", "phone", "website", "lat", "lon", "source_url",
+            "signal_quote", "draft_subject", "approved_at", "sent_at", "attribution",
         ]
+        has_osm = False
         with dest.open("w", encoding="utf-8", newline="") as fh:
             writer = csv.DictWriter(fh, fieldnames=fields)
             writer.writeheader()
             for lead in leads:
                 row = lead.to_public_dict()
+                prov = lead.provenance or {}
+                for key in ("phone", "website", "lat", "lon"):
+                    row[key] = prov.get(key, "")
+                row["attribution"] = _attribution(lead)
+                has_osm = has_osm or bool(row["attribution"])
                 writer.writerow({k: row.get(k, "") for k in fields})
-        return _ok(ok=True, path=str(dest), count=len(leads))
+            if has_osm:
+                # Footer row so the notice survives even if the column is dropped.
+                writer.writerow({"id": "#", "company": "Map data " + OSM_ATTRIBUTION})
+        return _ok(ok=True, path=str(dest), count=len(leads),
+                   attribution=OSM_ATTRIBUTION if has_osm else "")
     except Exception as exc:
         return _err(f"Export failed: {exc}")
 
@@ -201,6 +247,16 @@ def signaldesk_sources(args: dict, **kwargs) -> str:
         return _ok(ok=True, sources=list_source_info())
     except Exception as exc:
         return _err(f"Sources failed: {exc}")
+
+
+OSM_ATTRIBUTION = "© OpenStreetMap contributors, ODbL 1.0 (https://www.openstreetmap.org/copyright)"
+
+
+def _attribution(lead: Lead) -> str:
+    prov = lead.provenance or {}
+    if lead.signal_type == "local" or prov.get("source") == "osm_map":
+        return OSM_ATTRIBUTION
+    return ""
 
 
 def _write_eml(lead: Lead, dest: Path) -> Path:
@@ -213,6 +269,12 @@ def _write_eml(lead: Lead, dest: Path) -> Path:
         f"Subject: {subject}",
         "MIME-Version: 1.0",
         "Content-Type: text/plain; charset=utf-8",
+        "X-SignalDesk-Lead: " + lead.id,
+        "X-SignalDesk-Source: " + (lead.source_url or ""),
+    ]
+    if _attribution(lead):
+        lines.append("X-SignalDesk-Data-Attribution: " + _attribution(lead))
+    lines += [
         "",
         body,
     ]
@@ -276,4 +338,5 @@ HANDLERS = {
     "signaldesk_sources": signaldesk_sources,
     "signaldesk_prepare_send": signaldesk_prepare_send,
     "signaldesk_board": signaldesk_board,
+    "signaldesk_map_scan": signaldesk_map_scan,
 }

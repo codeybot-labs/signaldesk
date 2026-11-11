@@ -80,3 +80,21 @@ def test_prepare_send_refuses_unapproved():
     lead = list_leads(limit=1)[0]
     result = json.loads(tools.signaldesk_prepare_send({"lead_id": lead.id}))
     assert result["ok"] is False
+
+
+def test_followups_due_and_mark_followed_up():
+    from datetime import datetime, timedelta, timezone
+    from store import save_lead
+    _icp()
+    scan(kind="hn_hiring")
+    lead = list_leads(limit=1)[0]
+    # not sent yet -> cannot mark followed up
+    assert json.loads(tools.signaldesk_mark({"lead_id": lead.id, "followed_up": True}))["ok"] is False
+    lead.stage = "sent"
+    lead.sent_at = (datetime.now(timezone.utc) - timedelta(days=9)).isoformat()
+    save_lead(lead)
+    due = json.loads(tools.signaldesk_followups({}))
+    assert due["ok"] and any(r["id"] == lead.id and r["days_since_contact"] >= 9 for r in due["leads"])
+    assert json.loads(tools.signaldesk_mark({"lead_id": lead.id, "followed_up": True}))["ok"] is True
+    due = json.loads(tools.signaldesk_followups({}))
+    assert all(r["id"] != lead.id for r in due["leads"])

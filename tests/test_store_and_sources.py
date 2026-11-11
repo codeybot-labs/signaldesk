@@ -18,3 +18,13 @@ def test_source_registry_lists_core_four():
     assert ph["key_required"] is True
     assert [s.meta.id for s in sources_for("hiring")] == ["hn_hiring", "yc_hiring"]
     assert [s.meta.id for s in sources_for("launches")][:2] == ["hn_show", "yc_launches"]
+
+
+def test_launch_hn_title_parsing_and_offline_scan():
+    from pipeline import scan
+    from sources.hn_launch import parse_title
+    assert parse_title("Launch HN: Rivet (YC W23) – Scale and Orchestrate Agents on S3") == (
+        "Rivet", "W23", "Scale and Orchestrate Agents on S3")
+    assert parse_title("Show HN: nope") == ("", "", "")
+    report = scan(kind="hn_launch")
+    assert report["ok"] and report["inserted"] >= 10

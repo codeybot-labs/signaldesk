@@ -102,6 +102,7 @@ _PAGE_JS = r"""
   }
 
   function renderBoard() {
+    if (view === "map") { renderTable(); if (pinSrc) pinSrc.changed(); }
     const counts = { ...Object.fromEntries((state.stages || Object.keys(STAGE)).map(s => [s, 0])) };
     const vis = leads().filter(visible);
     vis.forEach(l => { counts[l.stage] = (counts[l.stage] || 0) + 1; });
@@ -128,6 +129,16 @@ _PAGE_JS = r"""
         </article>`;
       }).join("");
     });
+  }
+
+  function localDetails(lead) {
+    const p = lead.provenance || {};
+    const row = (k, v, link) => v ? `<div class="kv"><span>${k}</span>${link ? `<a href="${esc(link)}" target="_blank" rel="noopener">${esc(v)}</a>` : esc(v)}</div>` : "";
+    return `<section><h3>OpenStreetMap details</h3>
+      ${row("Type", p.business_type)}${row("Address", p.address)}
+      ${row("Website", p.website, p.website)}${row("Email", lead.contact)}${row("Phone", p.phone)}
+      ${row("Hours", p.opening_hours)}
+      <p class="attrib">© OpenStreetMap contributors, ODbL</p></section>`;
   }
 
   function renderPanel() {
@@ -163,8 +174,9 @@ _PAGE_JS = r"""
       <section>
         <h3>Signal</h3>
         <p class="quote">${esc(lead.signal_quote || "")}</p>
-        ${lead.source_url ? `<a class="src" href="${esc(lead.source_url)}" target="_blank" rel="noopener">Open source</a>` : ""}
+        ${lead.source_url ? `<a class="src" href="${esc(lead.source_url)}" target="_blank" rel="noopener">${lead.signal_type === "local" ? "Open on OpenStreetMap" : "Open source"}</a>` : ""}
       </section>
+      ${lead.signal_type === "local" ? localDetails(lead) : ""}
       <section>
         <h3>Why this score</h3>
         ${reasons ? `<ul class="reasons">${reasons}</ul>` : `<p class="muted">No reasons recorded.</p>`}
@@ -199,6 +211,7 @@ _PAGE_JS = r"""
     else history.replaceState(null, "", location.pathname + location.search);
     renderBoard();
     renderPanel();
+    if (view === "map") { renderTable(); if (pinSrc) pinSrc.changed(); focusPin(id); }
   }
 
   async function act(name) {
@@ -293,10 +306,181 @@ _PAGE_JS = r"""
     });
   }
 
+  // ---------- LocalLead Map (OpenLayers) ----------
+  const OSM_ATTR = 'Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors, ODbL';
+  let view = "board";
+  let map = null, pinSrc = null, boxSrc = null, drawInt = null, tip = null;
+  function localLeads() {
+    return leads().filter(l => l.signal_type === "local" && l.provenance && l.provenance.lat != null && visible(l))
+      .sort((a, b) => (b.score || 0) - (a.score || 0));
+  }
+  function pinColor(score) { return score >= 60 ? "#3ee0a4" : score >= 35 ? "#fbbf24" : "#fb7185"; }
+  function pinStyle(f) {
+    const lead = leadById(f.get("id"));
+    const sel = f.get("id") === selectedId;
+    return new ol.style.Style({
+      image: new ol.style.Circle({
+        radius: sel ? 11 : 7,
+        fill: new ol.style.Fill({ color: pinColor(lead ? lead.score : 0) }),
+        stroke: new ol.style.Stroke({ color: sel ? "#ffffff" : "#0a0e14", width: sel ? 3 : 2 })
+      }),
+      zIndex: sel ? 10 : 1
+    });
+  }
+  function initMap() {
+    if (map) return true;
+    if (!window.ol) { $("#m-status").textContent = "OpenLayers failed to load (vendor/ol/ol.js)."; return false; }
+    pinSrc = new ol.source.Vector();
+    boxSrc = new ol.source.Vector();
+    const defaults = (ol.control.defaults && ol.control.defaults.defaults) || ol.control.defaults;
+    map = new ol.Map({
+      target: "map",
+      layers: [
+        new ol.layer.Tile({ source: new ol.source.OSM({ attributions: OSM_ATTR }), className: "osm-tiles" }),
+        new ol.layer.Vector({ source: boxSrc, style: new ol.style.Style({
+          stroke: new ol.style.Stroke({ color: "#7dd3fc", width: 2, lineDash: [6, 6] }),
+          fill: new ol.style.Fill({ color: "rgba(125,211,252,.08)" }) }) }),
+        new ol.layer.Vector({ source: pinSrc, style: pinStyle })
+      ],
+      view: new ol.View({ center: ol.proj.fromLonLat([8.54, 47.375]), zoom: 12 }),
+      controls: defaults({ attribution: false }).extend([new ol.control.Attribution({ collapsible: false })])
+    });
+    tip = document.createElement("div");
+    tip.className = "map-tip";
+    const tipOv = new ol.Overlay({ element: tip, offset: [12, -12], positioning: "bottom-left" });
+    map.addOverlay(tipOv);
+    map.on("pointermove", e => {
+      const f = map.forEachFeatureAtPixel(e.pixel, x => x, { layerFilter: l => l.getSource() === pinSrc });
+      map.getTargetElement().style.cursor = f ? "pointer" : "";
+      if (f) {
+        const lead = leadById(f.get("id"));
+        tip.innerHTML = lead ? `<b>${esc(lead.company)}</b> <span class="score ${scoreClass(lead.score)}">${esc(lead.score)}</span>` : "";
+        tipOv.setPosition(e.coordinate);
+      } else tipOv.setPosition(undefined);
+    });
+    map.on("singleclick", e => {
+      if (drawInt) return;
+      const f = map.forEachFeatureAtPixel(e.pixel, x => x, { layerFilter: l => l.getSource() === pinSrc });
+      if (f) setSelected(f.get("id"));
+    });
+    return true;
+  }
+  function renderPins(fit) {
+    if (!map) return;
+    pinSrc.clear();
+    const rows = localLeads();
+    pinSrc.addFeatures(rows.map(l => {
+      const f = new ol.Feature(new ol.geom.Point(ol.proj.fromLonLat([Number(l.provenance.lon), Number(l.provenance.lat)])));
+      f.set("id", l.id);
+      return f;
+    }));
+    if (fit && rows.length) {
+      map.getView().fit(pinSrc.getExtent(), { padding: [50, 50, 50, 50], maxZoom: 15, duration: 700 });
+    }
+  }
+  function renderTable() {
+    const rows = localLeads();
+    const tb = $("#m-table tbody");
+    if (!tb) return;
+    $("#m-count").textContent = rows.length ? `${rows.length} businesses` : "";
+    if (!rows.length) {
+      tb.innerHTML = `<tr><td colspan="6" class="muted">No map leads yet. Enter a city and a business type, or draw an area.</td></tr>`;
+      return;
+    }
+    const yes = v => v ? `<span class="yes" title="${esc(v)}">✓</span>` : `<span class="no">–</span>`;
+    tb.innerHTML = rows.map(l => {
+      const p = l.provenance || {};
+      return `<tr data-id="${esc(l.id)}" class="${l.id === selectedId ? "active" : ""}">
+        <td><div class="m-name">${esc(l.company)}</div><div class="m-sub">${esc(p.address || p.business_type || "")}</div></td>
+        <td><span class="score ${scoreClass(l.score)}">${esc(l.score)}</span></td>
+        <td>${yes(p.website)}</td><td>${yes(l.contact)}</td><td>${yes(p.phone)}</td>
+        <td><span class="m-stage">${esc(l.stage)}</span></td></tr>`;
+    }).join("");
+    const active = $("#m-table tr.active");
+    if (active) active.scrollIntoView({ block: "nearest" });
+  }
+  function renderMapView(fit) {
+    if (view !== "map") return;
+    if (!initMap()) return;
+    renderPins(fit);
+    renderTable();
+    map.updateSize();
+  }
+  function setView(v) {
+    view = v;
+    $$(".view-toggle button").forEach(b => b.classList.toggle("on", b.dataset.view === v));
+    $(".board").hidden = v !== "board";
+    $("#mapview").hidden = v !== "map";
+    if (v === "map") {
+      if (filters.signal !== "all" && filters.signal !== "local") { filters.signal = "all"; $("#signal").value = "all"; }
+      setTimeout(() => renderMapView(true), 30);
+    }
+  }
+  async function mapScan(body) {
+    const status = $("#m-status");
+    if (!hasApi) { toast("Map scans need the SignalDesk server (Hermes Desktop or demo/serve_demo.py)", false); return; }
+    status.textContent = "Asking OpenStreetMap… (Nominatim 1 req/s, Overpass one query at a time, cached)";
+    $("#m-go").disabled = true;
+    try {
+      const res = await post("/api/map_scan", body);
+      await refresh();
+      renderHeader(); renderBoard();
+      const src = { live: "live OpenStreetMap", cache: "cached OpenStreetMap results", demo: "bundled OSM demo extract (offline)" }[res.mode] || res.mode;
+      status.innerHTML = `Found <b>${res.found}</b> ${esc(res.business_type)} · <b>${res.qualified}</b> qualified · ${esc(src)}`;
+      renderMapView(true);
+    } catch (err) {
+      status.textContent = err.message || String(err);
+      toast(err.message || String(err), false);
+    } finally {
+      $("#m-go").disabled = false;
+    }
+  }
+  function startDraw() {
+    if (!initMap()) return;
+    if (drawInt) { map.removeInteraction(drawInt); drawInt = null; $("#m-draw").classList.remove("on"); return; }
+    const createBox = (ol.interaction.draw && ol.interaction.draw.createBox) || (ol.interaction.Draw && ol.interaction.Draw.createBox);
+    boxSrc.clear();
+    drawInt = new ol.interaction.Draw({ source: boxSrc, type: "Circle", geometryFunction: createBox() });
+    $("#m-draw").classList.add("on");
+    $("#m-status").textContent = "Drag a rectangle on the map to scan just that area.";
+    drawInt.on("drawend", e => {
+      const ext = ol.proj.transformExtent(e.feature.getGeometry().getExtent(), "EPSG:3857", "EPSG:4326");
+      setTimeout(() => { map.removeInteraction(drawInt); drawInt = null; $("#m-draw").classList.remove("on"); }, 0);
+      const bbox = [ext[1], ext[0], ext[3], ext[2]].map(v => Number(v.toFixed(5))).join(",");
+      mapScan({ bbox, business_type: $("#m-type").value });
+    });
+    map.addInteraction(drawInt);
+  }
+  function bindMap() {
+    $$(".view-toggle button").forEach(b => b.addEventListener("click", () => setView(b.dataset.view)));
+    $("#mapform").addEventListener("submit", e => {
+      e.preventDefault();
+      const city = $("#m-city").value.trim();
+      if (!city) { toast("Type a city, or use Draw area", false); return; }
+      boxSrc && boxSrc.clear();
+      mapScan({ city, business_type: $("#m-type").value });
+    });
+    $("#m-draw").addEventListener("click", startDraw);
+    $("#m-table").addEventListener("click", e => {
+      const tr = e.target.closest("tr[data-id]");
+      if (tr) setSelected(tr.dataset.id);
+    });
+    window.addEventListener("resize", () => map && map.updateSize());
+    $("#panel").addEventListener("transitionend", () => map && map.updateSize());
+  }
+  function focusPin(id) {
+    if (!map || view !== "map") return;
+    const lead = leadById(id);
+    if (!lead || lead.signal_type !== "local" || !lead.provenance) return;
+    const c = ol.proj.fromLonLat([Number(lead.provenance.lon), Number(lead.provenance.lat)]);
+    map.getView().animate({ center: c, zoom: Math.max(map.getView().getZoom() || 12, 14), duration: 500 });
+  }
+
   const STAGE = { new:1, qualified:1, drafted:1, approved:1, sent:1, replied:1, won:1, lost:1 };
 
   async function init() {
     bind();
+    bindMap();
     const srcSel = $("#source");
     const seen = new Set();
     (state.sources || []).forEach(s => {
@@ -313,6 +497,7 @@ _PAGE_JS = r"""
     renderHeader();
     renderBoard();
     renderPanel();
+    if (location.search.includes("view=map")) setView("map");
   }
   init();
 })();
@@ -477,6 +662,41 @@ a.src { display: inline-block; margin-top: 6px; font-size: 12px; color: var(--bl
 .toast.ok { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
 .toast.err { border-color: color-mix(in srgb, var(--rose) 50%, var(--line)); }
 .muted { color: var(--muted); font-size: 12px; }
+.view-toggle { display: inline-flex; gap: 2px; margin-left: 14px; vertical-align: middle; background: #121821; border: 1px solid var(--line); border-radius: 9px; padding: 2px; }
+.view-toggle button { appearance: none; border: 0; background: transparent; color: var(--muted); font: 600 11px/1 inherit; letter-spacing: .04em; padding: 5px 11px; border-radius: 7px; cursor: pointer; }
+.view-toggle button.on { background: var(--accent-dim); color: var(--accent); }
+.brand h1 { display: flex; align-items: center; }
+#mapview { flex: 1; display: flex; min-width: 0; padding: 12px 14px 16px; gap: 12px; }
+#mapview[hidden], .board[hidden] { display: none; }
+.map-side { flex: 0 0 470px; width: 470px; display: flex; flex-direction: column; min-height: 0; background: color-mix(in srgb, var(--bg2) 92%, black); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
+#mapform { display: grid; grid-template-columns: 1fr 130px; gap: 8px; }
+#mapform input, #mapform select { background: #121821; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font: inherit; font-size: 13px; }
+#mapform .row { grid-column: 1 / -1; display: flex; gap: 8px; }
+#mapform .btn { padding: 8px 12px; }
+.btn.on { border-color: var(--blue); color: var(--blue); }
+#m-status { margin: 10px 2px 6px; font-size: 12px; color: var(--muted); min-height: 16px; }
+#m-status b { color: var(--text); }
+.m-head { display: flex; justify-content: space-between; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin: 4px 2px 6px; }
+.m-table-wrap { flex: 1; overflow-y: auto; min-height: 0; border-top: 1px solid var(--line); }
+#m-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+#m-table th { position: sticky; top: 0; background: #0f151d; color: var(--muted); font-weight: 600; font-size: 10px; text-transform: uppercase; letter-spacing: .07em; text-align: left; padding: 7px 6px; }
+#m-table td { padding: 7px 6px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+#m-table tr[data-id] { cursor: pointer; }
+#m-table tr[data-id]:hover { background: var(--card-hover); }
+#m-table tr.active { background: var(--accent-dim); }
+.m-name { font-weight: 600; font-size: 12.5px; }
+.m-sub { color: var(--muted); font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 230px; }
+.yes { color: var(--accent); font-weight: 700; } .no { color: #4b5563; }
+.m-stage { font-size: 10px; text-transform: uppercase; letter-spacing: .06em; color: var(--blue); }
+.attrib { font-size: 11px; color: var(--muted); margin: 8px 2px 0; }
+.attrib a, .ol-attribution a { color: var(--blue); }
+#map { flex: 1; min-width: 0; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); position: relative; background: #0d131a; }
+.osm-tiles { filter: invert(1) hue-rotate(180deg) brightness(.92) contrast(.88) saturate(.6); }
+#map .ol-attribution { background: rgba(10,14,20,.82); color: var(--text); border-radius: 8px 0 0 0; font-size: 12px; padding: 3px 8px; right: 0; bottom: 0; }
+#map .ol-attribution ul { margin: 0; padding: 0; } #map .ol-attribution button { display: none; }
+#map .ol-zoom { top: 10px; left: 10px; } #map .ol-zoom button { background: #1a222d; color: var(--text); }
+.map-tip { background: #0e141c; border: 1px solid var(--line); color: var(--text); padding: 4px 8px; border-radius: 8px; font-size: 12px; white-space: nowrap; box-shadow: var(--shadow); }
+.kv { display: flex; gap: 10px; font-size: 12px; padding: 2px 0; } .kv span { color: var(--muted); flex: 0 0 64px; } .kv a { color: var(--blue); overflow-wrap: anywhere; }
 @media (max-width: 1360px) {
   :root { --panel-w: 360px; --header-h: 126px; }
   .filters input[type="search"] { width: 130px; }
@@ -525,18 +745,24 @@ def render_board(path: Path | None = None, title: str = "SignalDesk") -> Path:
             f"</section>"
         )
     sources_opts = '<option value="all">All sources</option>'
+    try:
+        from geo import BUSINESS_TYPES
+        type_opts = "".join(f'<option value="{t}">{t.replace("_", " ")}</option>' for t in BUSINESS_TYPES)
+    except Exception:
+        type_opts = '<option value="dentist">dentist</option>'
     doc = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>{title} — pipeline board</title>
+<link rel="stylesheet" href="vendor/ol/ol.css"/>
 <style>{_PAGE_CSS}</style>
 </head>
 <body>
   <header class="top">
     <div class="brand">
-      <h1><span>Signal</span>Desk</h1>
+      <h1><span>Signal</span>Desk<span class="view-toggle" role="tablist"><button type="button" data-view="board" class="on">Pipeline</button><button type="button" data-view="map">Map</button></span></h1>
       <div class="sub">Public hiring and launch signals, scored against your ICP. Draft-first — nothing sends itself.</div>
     </div>
     <div class="filters">
@@ -545,6 +771,7 @@ def render_board(path: Path | None = None, title: str = "SignalDesk") -> Path:
         <option value="all">All signals</option>
         <option value="hiring">Hiring</option>
         <option value="launch">Launches</option>
+        <option value="local">Local (map)</option>
       </select>
       <select id="source" aria-label="Source">{sources_opts}</select>
       <label>Min score <input id="minscore" type="range" min="0" max="80" step="5" value="0"/> <span id="minscore-val">0</span></label>
@@ -555,6 +782,21 @@ def render_board(path: Path | None = None, title: str = "SignalDesk") -> Path:
   </header>
   <div class="board-wrap">
     <div class="board">{''.join(columns)}</div>
+    <section id="mapview" hidden>
+      <div class="map-side">
+        <form id="mapform" autocomplete="off">
+          <input id="m-city" placeholder="City, e.g. Zürich" aria-label="City"/>
+          <select id="m-type" aria-label="Business type">{type_opts}</select>
+          <div class="row"><button id="m-go" class="btn primary" type="submit">Scan OpenStreetMap</button>
+          <button id="m-draw" class="btn" type="button">Draw area</button></div>
+        </form>
+        <div id="m-status"></div>
+        <div class="m-head"><span>Local businesses</span><span id="m-count"></span></div>
+        <div class="m-table-wrap"><table id="m-table"><thead><tr><th>Business</th><th>Score</th><th>Web</th><th>Email</th><th>Phone</th><th>Stage</th></tr></thead><tbody></tbody></table></div>
+        <p class="attrib">Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors, ODbL. Geocoding: Nominatim. POIs: Overpass API.</p>
+      </div>
+      <div id="map"></div>
+    </section>
     <aside id="panel" aria-hidden="true">
       <div id="panel-inner">
         <button class="p-close" data-close type="button" aria-label="Close">×</button>
@@ -564,6 +806,7 @@ def render_board(path: Path | None = None, title: str = "SignalDesk") -> Path:
     </aside>
   </div>
   <div id="toast" class="toast"></div>
+  <script src="vendor/ol/ol.js"></script>
   <script>window.__SIGNALDESK__ = {bootstrap};</script>
   <script>{_PAGE_JS}</script>
 </body>
@@ -576,4 +819,22 @@ def render_board(path: Path | None = None, title: str = "SignalDesk") -> Path:
     dest = Path(dest)
     dest.parent.mkdir(parents=True, exist_ok=True)
     dest.write_text(doc, encoding="utf-8")
+    _copy_vendor(dest.parent)
     return dest
+
+
+VENDOR_OL = Path(__file__).resolve().parent / "assets" / "vendor" / "ol"
+
+
+def _copy_vendor(folder: Path) -> None:
+    """Place OpenLayers (BSD-2) next to the board so it works from file:// and offline."""
+    try:
+        target = folder / "vendor" / "ol"
+        target.mkdir(parents=True, exist_ok=True)
+        for name in ("ol.js", "ol.css", "NOTICE"):
+            src = VENDOR_OL / name
+            dst = target / name
+            if src.is_file() and (not dst.is_file() or dst.stat().st_size != src.stat().st_size):
+                dst.write_bytes(src.read_bytes())
+    except Exception:
+        pass

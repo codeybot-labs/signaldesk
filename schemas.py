@@ -20,6 +20,8 @@ SET_ICP = {
             "exclusions": {"type": "string", "description": "Terms that should lower the score."},
             "offer": {"type": "string", "description": "One-sentence description of what the user sells."},
             "booking_link": {"type": "string", "description": "Optional public booking URL to include in drafts."},
+            "business_types": {"type": "string", "description": "LocalLead Map: business types you sell to (e.g. 'dentist, cafe'). Matching map leads score higher."},
+            "local_offer": {"type": "string", "description": "Optional one-sentence pitch used in drafts to local businesses found on the map."},
             "sender_name": {"type": "string"},
             "qualify_min_score": {"type": "integer", "description": "Minimum score to mark a lead qualified (default 35)."},
             "followup_days": {"type": "integer"},
@@ -32,14 +34,14 @@ SCAN = {
     "description": (
         "Scan public hiring and/or launch sources, score new leads against the ICP, and upsert them. "
         "Does not send any outreach. kind can be 'all', 'hiring', 'launches', or a source id "
-        "(hn_hiring, yc_hiring, hn_show, yc_launches)."
+        "(hn_hiring, yc_hiring, hn_show, hn_launch, yc_launches, producthunt). For local businesses on a map use signaldesk_map_scan."
     ),
     "parameters": {
         "type": "object",
         "properties": {
             "kind": {
                 "type": "string",
-                "description": "all | hiring | launches | hn_hiring | yc_hiring | hn_show | yc_launches",
+                "description": "all | hiring | launches | hn_hiring | yc_hiring | hn_show | hn_launch | yc_launches | producthunt",
                 "default": "all",
             },
         },
@@ -53,7 +55,7 @@ LIST = {
         "type": "object",
         "properties": {
             "stage": {"type": "string", "description": "new|qualified|drafted|approved|sent|replied|won|lost"},
-            "signal_type": {"type": "string", "description": "hiring or launch"},
+            "signal_type": {"type": "string", "description": "hiring, launch, or local (map)"},
             "limit": {"type": "integer", "default": 25},
         },
     },
@@ -98,6 +100,7 @@ MARK = {
             "lead_id": {"type": "string"},
             "stage": {"type": "string", "description": "sent|replied|won|lost (also allowed: qualified|drafted|approved)."},
             "notes": {"type": "string"},
+            "followed_up": {"type": "boolean", "description": "Record that you sent a follow-up today (resets the follow-up timer on a sent lead)."},
         },
         "required": ["lead_id"],
     },
@@ -158,4 +161,25 @@ BOARD = {
     },
 }
 
-ALL_SCHEMAS = [SET_ICP, SCAN, LIST, DRAFT, APPROVE, MARK, FOLLOWUPS, EXPORT, SOURCES, PREPARE_SEND, BOARD]
+MAP_SCAN = {
+    "name": "signaldesk_map_scan",
+    "description": (
+        "LocalLead Map: find local businesses on OpenStreetMap (Overpass, geocoded with Nominatim) "
+        "for a city and business type, or inside a bbox, then score them against the ICP and add them "
+        "to the same lead pipeline. Uses website / email / phone from OSM. Results are cached and "
+        "requests are rate-limited; falls back to a bundled demo dataset offline. Drafts nothing and "
+        "sends nothing. Data © OpenStreetMap contributors, ODbL."
+    ),
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "city": {"type": "string", "description": "City or area name, e.g. 'Zürich' or 'Austin, TX'."},
+            "business_type": {"type": "string", "description": "dentist, cafe, restaurant, gym, lawyer, accountant, hairdresser, bakery, coworking, ... or a raw OSM tag like 'craft=brewery'."},
+            "bbox": {"type": "string", "description": "Optional 'south,west,north,east' in degrees instead of a city (e.g. an area drawn on the map)."},
+            "limit": {"type": "integer", "description": "Max businesses (default 40, max 80)."},
+        },
+        "required": ["business_type"],
+    },
+}
+
+ALL_SCHEMAS = [SET_ICP, SCAN, LIST, DRAFT, APPROVE, MARK, FOLLOWUPS, EXPORT, SOURCES, PREPARE_SEND, BOARD, MAP_SCAN]

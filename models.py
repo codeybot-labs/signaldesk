@@ -16,7 +16,7 @@ STAGES = (
     "lost",
 )
 
-SIGNAL_TYPES = ("hiring", "launch")
+SIGNAL_TYPES = ("hiring", "launch", "local")
 
 # Stages that mean the user already approved outreach to this lead.
 SENDABLE_STAGES = frozenset({"approved", "sent", "replied", "won"})
@@ -33,6 +33,8 @@ class ICP:
     company_stage: list[str] = field(default_factory=list)  # e.g. seed, early, growth
     exclusions: list[str] = field(default_factory=list)
     offer: str = ""
+    business_types: list[str] = field(default_factory=list)  # LocalLead Map, e.g. dentist, cafe
+    local_offer: str = ""  # optional pitch for local businesses (falls back to offer)
     booking_link: str = ""
     sender_name: str = ""
     qualify_min_score: int = 35
@@ -50,7 +52,7 @@ class ICP:
         for key, val in data.items():
             if key not in allowed:
                 continue
-            if key in {"keywords", "roles", "stack", "locations", "company_stage", "exclusions"}:
+            if key in {"keywords", "roles", "stack", "locations", "company_stage", "exclusions", "business_types"}:
                 if isinstance(val, str):
                     val = [p.strip() for p in val.split(",") if p.strip()]
                 elif not isinstance(val, list):

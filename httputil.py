@@ -11,7 +11,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Optional
 
-USER_AGENT = "SignalDesk/0.1 (Hermes plugin; https://github.com/codeybot-labs/signaldesk)"
+USER_AGENT = "SignalDesk/0.2 (Hermes plugin; https://github.com/codeybot-labs/signaldesk)"
 DEFAULT_TIMEOUT = 30
 
 

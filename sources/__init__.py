@@ -8,6 +8,7 @@ from sources.base import RawSignal, SignalSource, SourceMeta
 from sources.hn_hiring import HNHiringSource
 from sources.yc_hiring import YCHiringSource
 from sources.hn_show import HNShowSource
+from sources.hn_launch import HNLaunchSource
 from sources.yc_launches import YCLaunchesSource
 
 # Optional sources are imported lazily so a missing extra never breaks core.
@@ -20,6 +21,7 @@ def all_sources() -> list[SignalSource]:
         YCHiringSource(),
         HNShowSource(),
         YCLaunchesSource(),
+        HNLaunchSource(),
     ]
     for mod_name in _OPTIONAL:
         try:
@@ -65,4 +67,15 @@ def list_source_info() -> list[dict]:
             "limits": src.meta.limits,
             "description": src.meta.description,
         })
+    rows.append({
+        "id": "osm_map",
+        "name": "LocalLead Map (OSM)",
+        "signal_type": "local",
+        "requires_env": [],
+        "key_required": False,
+        "enabled": True,
+        "message": "On demand: signaldesk_map_scan city + business type. © OpenStreetMap contributors, ODbL.",
+        "limits": "Nominatim max 1 req/s, Overpass one request at a time; both cached.",
+        "description": "Local businesses from OpenStreetMap via Overpass and Nominatim.",
+    })
     return rows

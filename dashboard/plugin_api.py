@@ -65,6 +65,18 @@ def prepare(body: LeadBody) -> dict:
     return _run(tools.signaldesk_prepare_send, {"lead_id": body.lead_id})
 
 
+class MapScanBody(BaseModel):
+    business_type: str = Field(..., min_length=1)
+    city: str | None = None
+    bbox: str | None = None
+    limit: int | None = 40
+
+
+@router.post("/map/scan")
+def map_scan(body: MapScanBody) -> dict:
+    return _run(tools.signaldesk_map_scan, body.model_dump())
+
+
 @router.post("/scan")
 def scan() -> dict:
     return _run(tools.signaldesk_scan, {"kind": "all"})

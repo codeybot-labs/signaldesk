@@ -1,0 +1,615 @@
+{
+"city": "Zürich, Switzerland",
+"osm_key": "amenity",
+"osm_value": "dentist",
+"bbox": [
+47.3202184,
+8.4480182,
+47.434665,
+8.6254529
+],
+"fetched_at": "2026-11-11",
+"source": "Overpass API (overpass.osm.ch), query: [out:json][timeout:25];(node[\"amenity\"=\"dentist\"][\"name\"](47.32022,8.44802,47.43467,8.62545);way[\"amenity\"=\"dentist\"][\"name\"](47.32022,8.44802,47.43467,8.62545););out center tags 40;",
+"license": "ODbL 1.0",
+"attribution": "© OpenStreetMap contributors, ODbL 1.0 (https://www.openstreetmap.org/copyright)",
+"elements": [
+{
+"type": "node",
+"id": 366978003,
+"lat": 47.3888698,
+"lon": 8.5221046,
+"tags": {
+"amenity": "dentist",
+"healthcare": "centre",
+"name": "Swiss Dental Center",
+"opening_hours": "Mo-Th 08:00-18:00; Fr 08:00-17:00",
+"website": "https://swissdentalcenter.ch/"
+}
+},
+{
+"type": "node",
+"id": 693318667,
+"lat": 47.3767441,
+"lon": 8.5399903,
+"tags": {
+"addr:housenumber": "110",
+"addr:street": "Bahnhofstrasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "swiss smile",
+"opening_hours": "Mo-Fr 07:00-21:00"
+}
+},
+{
+"type": "node",
+"id": 890983437,
+"lat": 47.3740281,
+"lon": 8.529506,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "10",
+"addr:postcode": "8004",
+"addr:street": "Lutherstrasse",
+"amenity": "dentist",
+"email": "dr.neumann@stauffacherzahnarzt.ch",
+"name": "Zahnarzt Am Stauffacher",
+"phone": "+41 43 810 08 70"
+}
+},
+{
+"type": "node",
+"id": 2090057908,
+"lat": 47.3905899,
+"lon": 8.4890888,
+"tags": {
+"addr:housenumber": "561",
+"addr:street": "Hohlstrasse",
+"amenity": "dentist",
+"email": "zuerich.alt@zahnarztzentrum.ch",
+"name": "Zahnarztzentrum",
+"opening_hours": "Mo-Fr 07:00-20:00; Sa 09:00-16:00; Su 15:00-18:00; PH off",
+"phone": "+41 43 336 39 00",
+"website": "https://zahnarztzentrum.ch/"
+}
+},
+{
+"type": "node",
+"id": 2566004537,
+"lat": 47.3251993,
+"lon": 8.5448234,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Dr. med.dent. Jens Tartsch"
+}
+},
+{
+"type": "node",
+"id": 3851495720,
+"lat": 47.4022185,
+"lon": 8.4979933,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "204",
+"addr:postcode": "8049",
+"addr:street": "Limmattalstrasse",
+"amenity": "dentist",
+"email": "info@zahnloft.ch",
+"healthcare": "dentist",
+"name": "Zahnloft"
+}
+},
+{
+"type": "node",
+"id": 3928787884,
+"lat": 47.3926013,
+"lon": 8.5387699,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "dentique.",
+"opening_hours": "Mo,We 09:00-13:00,14:00-18:00; Tu,Th 08:30-13:00,14:00-17:30; Fr 08:30-13:30,14:00-17:00",
+"website": "https://dentique.ch"
+}
+},
+{
+"type": "node",
+"id": 4149069913,
+"lat": 47.3653872,
+"lon": 8.5371241,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Zahnarztpraxis zum Roten Schloss",
+"website": "https://www.zumrotenschloss.ch/"
+}
+},
+{
+"type": "node",
+"id": 4244051793,
+"lat": 47.3773666,
+"lon": 8.5383921,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "12",
+"addr:postcode": "8001",
+"addr:street": "Bahnhofplatz",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "ZurichDental",
+"opening_hours": "Mo-Fr 07:00-21:00; Sa 08:00-15:00; Su 12:00-15:00",
+"website": "https://www.zurichdental.ch/"
+}
+},
+{
+"type": "node",
+"id": 4377444854,
+"lat": 47.4204712,
+"lon": 8.5486612,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Dr. Jörg Ingo Happel",
+"phone": "+41 44 302 50 35"
+}
+},
+{
+"type": "node",
+"id": 4491255289,
+"lat": 47.3782028,
+"lon": 8.4929653,
+"tags": {
+"amenity": "dentist",
+"name": "HTW",
+"opening_hours": "Sep-Jun Mo-We 08:00-18:00; Sep-Jun Th 08:00-16:00; Sep-Jun Fr 08:00-13:00; Jul-Aug Mo-We 08:00-18:00; Jul-Aug Th 08:00-16:00; Jul-Aug Fr off"
+}
+},
+{
+"type": "node",
+"id": 4718203059,
+"lat": 47.4233759,
+"lon": 8.5620904,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Glattpark Zahnärztliches Team",
+"phone": "+41 44 811 16 16",
+"website": "https://www.zz-glattpark.ch/"
+}
+},
+{
+"type": "node",
+"id": 4833061552,
+"lat": 47.3772946,
+"lon": 8.5388314,
+"tags": {
+"addr:city": "Zürich",
+"addr:postcode": "8001",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Swiss Smile",
+"opening_hours": "Mo-Fr 07:00-21:00; Sa 08:00-20:00; Su 10:00-18:00"
+}
+},
+{
+"type": "node",
+"id": 4838594397,
+"lat": 47.3874478,
+"lon": 8.4885242,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "37",
+"addr:postcode": "8048",
+"addr:street": "Saumackerstrasse",
+"amenity": "dentist",
+"name": "Zahnarztpraxis Altstetten",
+"opening_hours": "Mo-Sa 08:00-21:00",
+"website": "https://zahnarztpraxis-altstetten.ch/"
+}
+},
+{
+"type": "node",
+"id": 4875749821,
+"lat": 47.4307783,
+"lon": 8.4608269,
+"tags": {
+"amenity": "dentist",
+"name": "Zahnarztpraxis Forberger",
+"website": "https://www.zahnarzt-forberger.ch/"
+}
+},
+{
+"type": "node",
+"id": 5028197930,
+"lat": 47.4097009,
+"lon": 8.5449668,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "11",
+"addr:postcode": "8050",
+"addr:street": "Edisonstrasse",
+"amenity": "dentist",
+"email": "zuerich.oer@zahnarztzentrum.ch",
+"healthcare": "dentist",
+"name": "zahnarztzentrum.ch Oerlikon",
+"opening_hours": "Mo-Fr 07:00-21:00; Sa 09:00-16:00; Su 12:00-15:00",
+"phone": "+41 43 288 40 10",
+"website": "https://zahnarztzentrum.ch/de/zuerich/oerlikon.html"
+}
+},
+{
+"type": "node",
+"id": 5078190897,
+"lat": 47.3612115,
+"lon": 8.5175372,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "107",
+"addr:postcode": "8045",
+"addr:street": "Uetlibergstrasse",
+"amenity": "dentist",
+"email": "info@dr-scholpp.ch",
+"healthcare": "dentist",
+"name": "Zahnarztpraxis Dr. Lidia Scholpp",
+"website": "https://www.dr-scholpp.ch/"
+}
+},
+{
+"type": "node",
+"id": 5297598015,
+"lat": 47.3775901,
+"lon": 8.5299325,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "18",
+"addr:postcode": "8004",
+"addr:street": "Kanonengasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Ambulatorium Kanonengasse",
+"opening_hours": "Mo-Fr 09:00-12:30, 13:00-15:00; Th off",
+"phone": "+41 44 415 76 01",
+"website": "https://www.stadt-zuerich.ch/med"
+}
+},
+{
+"type": "node",
+"id": 5326001890,
+"lat": 47.4194107,
+"lon": 8.5565464,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "77",
+"addr:postcode": "8052",
+"addr:street": "Schärenmoosstrasse",
+"amenity": "dentist",
+"email": "oerlikon@adent.ch",
+"healthcare": "dentist",
+"name": "Adent Oerlikon",
+"opening_hours": "Mo-Th 08:00-18:30; Fr 08:00-16:00; Sa-Su off",
+"phone": "+41 44 441 74 20",
+"website": "https://adent.ch/de/klinik/zurich/"
+}
+},
+{
+"type": "node",
+"id": 5384559408,
+"lat": 47.3667628,
+"lon": 8.5313389,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "8",
+"addr:postcode": "8002",
+"addr:street": "Parkring",
+"amenity": "dentist",
+"email": "info@zahnfee28.ch",
+"healthcare": "dentist",
+"name": "Zahnfee 2.8",
+"opening_hours": "Mo-Fr 07:30-21:00; Sa 09:00-15:00",
+"phone": "+41 44 322 28 00",
+"website": "https://www.zahnfee28.ch"
+}
+},
+{
+"type": "node",
+"id": 5801470556,
+"lat": 47.3974437,
+"lon": 8.5328897,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "60",
+"addr:postcode": "8057",
+"addr:street": "Bucheggstrasse",
+"amenity": "dentist",
+"email": "info@zahnarztpraxis-buchegg.ch",
+"healthcare": "dentist",
+"name": "Zahnarztpraxis Buchegg",
+"opening_hours": "Mo-Th 08:00-17:00; Fr 07:00-16:00; Sa-Su off",
+"phone": "+41 44 211 54 54",
+"website": "https://zahnarztpraxis-buchegg.ch/"
+}
+},
+{
+"type": "node",
+"id": 5875816287,
+"lat": 47.4052823,
+"lon": 8.5730693,
+"tags": {
+"addr:housenumber": "14",
+"addr:postcode": "8051",
+"addr:street": "Herzogenmühlestrasse",
+"amenity": "dentist",
+"email": "info@zzn.ch",
+"healthcare": "dentist",
+"name": "Zahnmedizin Zürich Nord",
+"opening_hours": "Mo-Fr 07:00-19:30",
+"phone": "+41 44 325 15 05",
+"website": "https://www.zahnmedizin-zuerich.ch/"
+}
+},
+{
+"type": "node",
+"id": 6390221846,
+"lat": 47.363719,
+"lon": 8.5566439,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "34",
+"addr:postcode": "8008",
+"addr:street": "Forchstrasse",
+"amenity": "dentist",
+"email": "care@smiletowin.com",
+"healthcare": "dentist",
+"name": "Smile To Win",
+"opening_hours": "\"nach Vereinbarung\"",
+"phone": "+41 44 422 21 31",
+"website": "https://smiletowin.com/"
+}
+},
+{
+"type": "node",
+"id": 6819295937,
+"lat": 47.3852285,
+"lon": 8.4931742,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "17",
+"addr:postcode": "8048",
+"addr:street": "Buckhauserstrasse",
+"amenity": "dentist",
+"email": "kontakt@whitesmyle.ch",
+"healthcare": "dentist",
+"name": "White Smyle",
+"opening_hours": "Mo-Fr 08:00-18:00; Sa 09:00-13:00",
+"phone": "+41 43 931 78 74",
+"website": "https://www.whitesmyle.ch/"
+}
+},
+{
+"type": "node",
+"id": 7091058321,
+"lat": 47.3724897,
+"lon": 8.5348704,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "50",
+"addr:postcode": "8001",
+"addr:street": "Talacker",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Zahnarztzentrum.ch",
+"opening_hours": "Mo-Fr 07:00-20:00; Sa 09:00-16:00; Su 09:00-12:00",
+"website": "https://zahnarztzentrum.ch/zuerich/city"
+}
+},
+{
+"type": "node",
+"id": 7107268776,
+"lat": 47.4131945,
+"lon": 8.5925479,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Zahnärztliches Zentrum",
+"website": "https://www.zzwallisellen.ch/"
+}
+},
+{
+"type": "node",
+"id": 7242837786,
+"lat": 47.3923066,
+"lon": 8.5141683,
+"tags": {
+"addr:city": "Zürich",
+"amenity": "dentist",
+"name": "Zahnarztzentrum Zürich West",
+"opening_hours": "Mo-Fr 07:00-20:00; Sa 09:00-16:00",
+"website": "https://www.zahnarztzentrum.ch"
+}
+},
+{
+"type": "node",
+"id": 7954984298,
+"lat": 47.4051246,
+"lon": 8.4764219,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Marina Müller"
+}
+},
+{
+"type": "node",
+"id": 7977863004,
+"lat": 47.3992251,
+"lon": 8.5034799,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Zahnwelt Höngg"
+}
+},
+{
+"type": "node",
+"id": 8420173166,
+"lat": 47.416046,
+"lon": 8.5420728,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "25",
+"addr:postcode": "8050",
+"addr:street": "Eggbühlstrasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Schulzahnklinik Eggbühl",
+"opening_hours": "Mo-Fr 07:45-12:00,13:15-16:45"
+}
+},
+{
+"type": "node",
+"id": 8476003306,
+"lat": 47.4130768,
+"lon": 8.5473217,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "5",
+"addr:postcode": "8050",
+"addr:street": "Andreasstrasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "bestsmile",
+"opening_hours": "Mo-We,Fr 09:00-18:00; Th 09:00-19:00; Sa 09:00-17:00",
+"website": "https://bestsmile.com/de/standorte/zuerich-oerlikon/"
+}
+},
+{
+"type": "node",
+"id": 8476004446,
+"lat": 47.3738293,
+"lon": 8.5353417,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "16",
+"addr:postcode": "8001",
+"addr:street": "Löwenstrasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "bestsmile",
+"opening_hours": "Mo-Fr 09:00-13:00,14:00-18:00",
+"website": "https://bestsmile.com/de/standorte/zuerich-loewenstrasse/"
+}
+},
+{
+"type": "node",
+"id": 8476014564,
+"lat": 47.3892888,
+"lon": 8.5207398,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "301",
+"addr:postcode": "8005",
+"addr:street": "Hardstrasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "OrthoDentia"
+}
+},
+{
+"type": "node",
+"id": 8681092407,
+"lat": 47.3998703,
+"lon": 8.503934,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "123",
+"addr:postcode": "8049",
+"addr:street": "Limmattalstrasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Schweizer Kieferorthopädie Zürich-Höngg",
+"opening_hours": "Mo-We 07:00-12:00, 12:30-17:00; Th 07:00-12:00, 12:30-18:00; PH off"
+}
+},
+{
+"type": "node",
+"id": 8822651949,
+"lat": 47.3613637,
+"lon": 8.5267502,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "11",
+"addr:postcode": "8002",
+"addr:street": "Waffenplatzstrasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "ZMP Dental"
+}
+},
+{
+"type": "node",
+"id": 8822651950,
+"lat": 47.3810089,
+"lon": 8.5421575,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "61",
+"addr:postcode": "8006",
+"addr:street": "Stampfenbachstrasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "ZMP Dental"
+}
+},
+{
+"type": "node",
+"id": 9045017273,
+"lat": 47.3967411,
+"lon": 8.5970207,
+"tags": {
+"amenity": "dentist",
+"name": "ZurichDental",
+"phone": "+41 44 215 51 51",
+"website": "https://www.zurichdental.ch/zahnarzt-stettbach-duebendorf/"
+}
+},
+{
+"type": "node",
+"id": 9235569676,
+"lat": 47.377943,
+"lon": 8.5219369,
+"tags": {
+"addr:city": "Zürich",
+"addr:housenumber": "75",
+"addr:postcode": "8004",
+"addr:street": "Feldstrasse",
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Schulzahnklinik Aussersihl"
+}
+},
+{
+"type": "node",
+"id": 9318316471,
+"lat": 47.3995906,
+"lon": 8.6222668,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Zahnarztpraxis Dr. Nadine Fenner",
+"phone": "+41 44 821 42 33",
+"website": "https://zahnarztpraxis-fenner.ch"
+}
+},
+{
+"type": "node",
+"id": 9368787618,
+"lat": 47.3338784,
+"lon": 8.6202855,
+"tags": {
+"amenity": "dentist",
+"healthcare": "dentist",
+"name": "Zahnarztpraxis Leugrueb"
+}
+}
+]
+}

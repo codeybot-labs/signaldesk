@@ -88,6 +88,20 @@ class Handler(BaseHTTPRequestHandler):
             from boardhtml import board_payload
             _json(self, 200, board_payload())
             return
+        if path.startswith("/vendor/ol/"):
+            name = Path(path).name
+            src = ROOT / "assets" / "vendor" / "ol" / name
+            if name not in {"ol.js", "ol.css"} or not src.is_file():
+                self.send_error(404, "not found")
+                return
+            data = src.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/javascript" if name.endswith(".js") else "text/css")
+            self.send_header("Cache-Control", "max-age=3600")
+            self.send_header("Content-Length", str(len(data)))
+            self.end_headers()
+            self.wfile.write(data)
+            return
         if path.startswith("/exports/"):
             name = Path(path).name
             if name != Path(name).name or ".." in name:
@@ -120,6 +134,9 @@ class Handler(BaseHTTPRequestHandler):
             "/api/approve": lambda: tools.signaldesk_approve({"lead_id": lead_id}),
             "/api/mark": lambda: tools.signaldesk_mark({"lead_id": lead_id, "stage": body.get("stage"), "notes": body.get("notes")}),
             "/api/prepare": lambda: tools.signaldesk_prepare_send({"lead_id": lead_id}),
+            "/api/map_scan": lambda: tools.signaldesk_map_scan({
+                "city": body.get("city"), "business_type": body.get("business_type"),
+                "bbox": body.get("bbox"), "limit": body.get("limit") or 40}),
         }
         fn = routes.get(parsed.path)
         if not fn:
