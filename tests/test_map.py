@@ -185,3 +185,20 @@ def test_desktop_bundle_passes_surface_lint():
     src = (Path(__file__).resolve().parents[1] / "desktop" / "plugin.js").read_text(encoding="utf-8")
     assert "MapPanel" in src and "OpenLayers 10.5.0" in src
     assert 'createElement("script")' not in src and "createElement('script')" not in src
+
+
+def test_overpass_bad_body_retries_once_then_succeeds(net, monkeypatch):
+    calls = {"n": 0}
+    good = net.http
+
+    def flaky(url, data, headers):
+        if "overpass" in url:
+            calls["n"] += 1
+            if calls["n"] == 1:
+                return b"<html>busy</html>"
+        return good(url, data, headers)
+
+    monkeypatch.setattr(geo, "http_fn", flaky)
+    out = json.loads(tools.signaldesk_map_scan({"city": "Testville", "business_type": "dentist"}))
+    assert out["mode"] == "live" and out["found"] == 2
+    assert calls["n"] == 2 and geo.OVERPASS_RETRY_PAUSE in net.slept

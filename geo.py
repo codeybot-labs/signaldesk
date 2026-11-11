@@ -50,6 +50,7 @@ NOMINATIM_TTL = 30 * 86400
 OVERPASS_TTL = 7 * 86400
 OVERPASS_TIMEOUT = 25  # server-side [timeout:]
 HTTP_TIMEOUT = 40
+OVERPASS_RETRY_PAUSE = 2.0
 MAX_RESULTS = 80
 MAX_BBOX_DEG2 = 0.6  # refuse huge areas (roughly a large metro)
 
@@ -224,20 +225,27 @@ def fetch_pois(bbox: list[float], key: str, value: str, limit: int = MAX_RESULTS
         return {"elements": cached, "cached": True}
     if _offline():
         raise RuntimeError("offline: Overpass disabled")
-    raw = None
-    errors = []
+    data = None
+    errors: list[str] = []
     with _OVERPASS_LOCK:
-        for url in overpass_urls():
-            try:
-                raw = http_fn(url, urllib.parse.urlencode({"data": q}).encode(),
-                              {"User-Agent": USER_AGENT, "Accept": "application/json",
-                               "Content-Type": "application/x-www-form-urlencoded"})
+        # Instances are tried one after another; one polite retry after a pause
+        # (public instances sometimes answer with an empty or HTML "busy" page).
+        for attempt in range(2):
+            if attempt:
+                sleep_fn(OVERPASS_RETRY_PAUSE)
+            for url in overpass_urls():
+                try:
+                    raw = http_fn(url, urllib.parse.urlencode({"data": q}).encode(),
+                                  {"User-Agent": USER_AGENT, "Accept": "application/json",
+                                   "Content-Type": "application/x-www-form-urlencoded"})
+                    data = json.loads(raw.decode("utf-8"))
+                    break
+                except Exception as exc:
+                    errors.append(f"{urllib.parse.urlparse(url).netloc}: {str(exc)[:80]}")
+            if data is not None:
                 break
-            except Exception as exc:
-                errors.append(f"{urllib.parse.urlparse(url).netloc}: {exc}")
-    if raw is None:
+    if data is None:
         raise RuntimeError("Overpass unreachable (" + "; ".join(errors)[:300] + ")")
-    data = json.loads(raw.decode("utf-8"))
     if data.get("remark") and not data.get("elements"):
         raise RuntimeError(f"Overpass: {data['remark'][:160]}")
     elements = data.get("elements") or []
