@@ -1,0 +1,34 @@
+name: signaldesk
+version: "0.1.0"
+description: "Draft-first lead desk: scan public hiring and launch signals (HN Who is hiring, YC hiring, Show HN, new YC companies), score them against your ICP, draft outreach, and never send without in-plugin approval. Cron and unattended runs fail closed."
+author: codeybot-labs
+license: MIT
+homepage: https://github.com/codeybot-labs/signaldesk
+requires_hermes: ">=0.22.0"
+provides_tools:
+  - signaldesk_set_icp
+  - signaldesk_scan
+  - signaldesk_list
+  - signaldesk_draft
+  - signaldesk_approve
+  - signaldesk_mark
+  - signaldesk_followups
+  - signaldesk_export_csv
+  - signaldesk_sources
+  - signaldesk_prepare_send
+  - signaldesk_board
+provides_hooks:
+  - pre_tool_call
+config_schema:
+  sender_name:
+    type: str
+    default: ""
+    description: "Name signed at the end of outreach drafts."
+  offer:
+    type: str
+    default: ""
+    description: "One sentence describing what you sell, used in drafts and scoring context."
+  booking_link:
+    type: str
+    default: ""
+    description: "Optional public booking URL included in drafts."

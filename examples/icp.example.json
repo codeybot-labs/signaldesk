@@ -1,0 +1,15 @@
+{
+  "keywords": ["AI", "agent", "developer tools", "infrastructure", "analytics"],
+  "roles": ["engineer", "founder", "devops", "growth"],
+  "stack": ["python", "typescript"],
+  "locations": ["San Francisco", "US", "remote"],
+  "remote_ok": true,
+  "onsite_ok": true,
+  "company_stage": ["seed", "early"],
+  "exclusions": ["casino", "payday"],
+  "offer": "an AI copilot that turns public hiring and launch signals into draft-ready outreach",
+  "booking_link": "https://cal.com/you/intro",
+  "sender_name": "Your Name",
+  "qualify_min_score": 35,
+  "followup_days": 5
+}

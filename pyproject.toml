@@ -1,0 +1,13 @@
+[project]
+name = "signaldesk"
+version = "0.1.0"
+description = "Draft-first Hermes plugin for hiring and launch lead signals."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "codeybot-labs" }]
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

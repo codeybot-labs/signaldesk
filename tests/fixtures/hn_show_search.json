@@ -1,0 +1,1767 @@
+{
+  "exhaustive": {
+    "nbHits": false,
+    "typo": false
+  },
+  "exhaustiveNbHits": false,
+  "exhaustiveTypo": false,
+  "hits": [
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "zdying"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: TrueDate \u2013 Filter searches to pre-2023 and detect fake article dates"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/zdying/true-date-extension"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_zdying",
+        "story_50452315",
+        "show_hn"
+      ],
+      "author": "zdying",
+      "children": [
+        50452321
+      ],
+      "created_at": "2026-11-11T11:50:52Z",
+      "created_at_i": 1794397852,
+      "num_comments": 0,
+      "objectID": "50452315",
+      "points": 1,
+      "story_id": 50452315,
+      "title": "Show HN: TrueDate \u2013 Filter searches to pre-2023 and detect fake article dates",
+      "updated_at": "2026-11-11T11:52:11Z",
+      "url": "https://github.com/zdying/true-date-extension"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "orbis-tertius"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Hi, here's a TUI we originally created for internal use. The goal is to be able to control multiple Claude Code sessions running in parallel while being able to review the changes and to understand the design choices the agents make.<p>The key design principles are:<p>- the programmer's attention is the bottleneck, so instead of cycling between sessions to find what's waiting for user input we use hooks to push work to the attention queue, i.e. let work come to you, not viceversa<p>- easy change, review and comment loop: [tuicr](<a href=\"https://tuicr.dev/\" rel=\"nofollow\">https://tuicr.dev/</a>}-inspired code reviews. Easy to add comments and send them to agents<p>- unobtrusive tooling: run on tmux sessions, connect to claude code via hooks, no complex dependencies<p>- quiz mode: answer design questions about the code to verify and reinforce your understanding of the changes<p>- keyboard-first navigation with vim keybindings<p>Comments, ideas and PRs all welcome!"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Aq \u2013 an attention queue TUI for Claude Code"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/nodo-labs-uk/attention-queue"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_orbis-tertius",
+        "story_50452257",
+        "show_hn"
+      ],
+      "author": "orbis-tertius",
+      "created_at": "2026-11-11T11:43:35Z",
+      "created_at_i": 1794397415,
+      "num_comments": 0,
+      "objectID": "50452257",
+      "points": 1,
+      "story_id": 50452257,
+      "story_text": "Hi, here&#x27;s a TUI we originally created for internal use. The goal is to be able to control multiple Claude Code sessions running in parallel while being able to review the changes and to understand the design choices the agents make.<p>The key design principles are:<p>- the programmer&#x27;s attention is the bottleneck, so instead of cycling between sessions to find what&#x27;s waiting for user input we use hooks to push work to the attention queue, i.e. let work come to you, not viceversa<p>- easy change, review and comment loop: [tuicr](<a href=\"https:&#x2F;&#x2F;tuicr.dev&#x2F;\" rel=\"nofollow\">https:&#x2F;&#x2F;tuicr.dev&#x2F;</a>}-inspired code reviews. Easy to add comments and send them to agents<p>- unobtrusive tooling: run on tmux sessions, connect to claude code via hooks, no complex dependencies<p>- quiz mode: answer design questions about the code to verify and reinforce your understanding of the changes<p>- keyboard-first navigation with vim keybindings<p>Comments, ideas and PRs all welcome!",
+      "title": "Show HN: Aq \u2013 an attention queue TUI for Claude Code",
+      "updated_at": "2026-11-11T11:46:43Z",
+      "url": "https://github.com/nodo-labs-uk/attention-queue"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "mkarliner"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Hi, I'm Mike,\nI've made ThingStudio, a flow programing environment for microcontrollers. It allows drag and drop programming Node-RED style, but emits MicroPython which it uploads to the micro. The board does not need the editor to run after that. Runs fully local, Apache 2 licensed.\nThere's a functional version of the editor/IDE at linked to the home page, you'll need to install to be able to upload, because WebSerial is not universal.\nPlease give it a whirl. I'm happy to answer any questions."
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: ThingStudio, Node-RED style programming for microcontrollers"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://thingstudio.net/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_mkarliner",
+        "story_50452230",
+        "show_hn"
+      ],
+      "author": "mkarliner",
+      "created_at": "2026-11-11T11:39:15Z",
+      "created_at_i": 1794397155,
+      "num_comments": 0,
+      "objectID": "50452230",
+      "points": 2,
+      "story_id": 50452230,
+      "story_text": "Hi, I&#x27;m Mike,\nI&#x27;ve made ThingStudio, a flow programing environment for microcontrollers. It allows drag and drop programming Node-RED style, but emits MicroPython which it uploads to the micro. The board does not need the editor to run after that. Runs fully local, Apache 2 licensed.\nThere&#x27;s a functional version of the editor&#x2F;IDE at linked to the home page, you&#x27;ll need to install to be able to upload, because WebSerial is not universal.\nPlease give it a whirl. I&#x27;m happy to answer any questions.",
+      "title": "Show HN: ThingStudio, Node-RED style programming for microcontrollers",
+      "updated_at": "2026-11-11T11:51:13Z",
+      "url": "https://thingstudio.net/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "anahata"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Pure-JavaFX God's Eye View \u2013 Tracking flights and live cameras [video]"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://www.youtube.com/watch?v=DKgJRHRo26I"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_anahata",
+        "story_50452051",
+        "show_hn"
+      ],
+      "author": "anahata",
+      "children": [
+        50452076
+      ],
+      "created_at": "2026-11-11T11:13:13Z",
+      "created_at_i": 1794395593,
+      "num_comments": 1,
+      "objectID": "50452051",
+      "points": 1,
+      "story_id": 50452051,
+      "title": "Show HN: Pure-JavaFX God's Eye View \u2013 Tracking flights and live cameras [video]",
+      "updated_at": "2026-11-11T11:18:12Z",
+      "url": "https://www.youtube.com/watch?v=DKgJRHRo26I"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "sofumel"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Reinwatch \u2013 a Claude Code mod that stops runaway subagents"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/sofumel/reinwatch"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_sofumel",
+        "story_50452047",
+        "show_hn"
+      ],
+      "author": "sofumel",
+      "created_at": "2026-11-11T11:12:51Z",
+      "created_at_i": 1794395571,
+      "num_comments": 0,
+      "objectID": "50452047",
+      "points": 1,
+      "story_id": 50452047,
+      "title": "Show HN: Reinwatch \u2013 a Claude Code mod that stops runaway subagents",
+      "updated_at": "2026-11-11T11:15:12Z",
+      "url": "https://github.com/sofumel/reinwatch"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Crokily"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "partial",
+          "matchedWords": [
+            "hn"
+          ],
+          "value": "Hi <em>HN</em>, I'm Crokily. Pots is an AI coworker that lives in the chat your team already uses: Slack, Discord, Telegram, or any channel with a Chat SDK adapter. It is MIT-licensed and runs on a machine you give it, with the model you choose.<p>To be honest, the first time I used Grok Bot, its design really impressed me. Unlike OpenClaw before it, it was not just Claude Code connected to a chat app. It truly cared about how it works with people. It felt like a living AI assistant, and working with it was painless. That is the idea I kept learning from the whole time I built Pots: it is not an agent hooked up to a chat channel. It should be a coworker that feels alive and is comfortable to work with.<p>But Grok Bot is only Grok's bot. Which model you get depends on your X subscription, your data and your machine are all in the cloud, and most of all, it is a standalone app, and most of its features serve that app.<p>Pots is a bit different. In Sydney I have talked with quite a few founders. Grok Bot is good, and it helps them a lot with their personal tasks. But when I asked who had actually put Grok Bot into their company's work to make their startup team faster, nobody had. So I think Pots is in a different place from Grok Bot, and from most open-source Grok Bot alternatives: it grew out of what real startup teams need. Before I open-sourced it, 6 small startups I met at startup events had been using it with me for over a month.<p>Pots is built first for the channels startup teams already work in, not for an app of its own, so most of what it does serves the places where you actually work. The teams use Pots as a middle layer: a CEO talks ideas through with the team in chat, Pots listens, and then it builds a prototype that both sides can check. They use Pots for competitor research: because Pots runs inside their channels, it knows their product well. Not only the GitHub repo, but the team's daily discussions and what the team cares about. Pots has been listening quietly the whole time, so it knows the product with no setup at all. It also works well with each channel: it talks to people with the channel's own controls, like Slack and Discord buttons and cards, and when it hands over something complex, it deploys a page with its built-in server so everyone sees it in a better form.<p>So Pots is different from Grok Bot and from most open-source alternatives. It came out of what real startup teams need. Its channel features start from what each company's work needs, and it can join your real work setup with no setup and still do well, instead of being one more app that nobody uses and that is hard to start with. And it ran in real business for a while before I cleaned it up and open-sourced it.<p>The difference from Grok Bot is also exactly why I made Pots an open-source Grok Bot alternative. I have OpenAI and Claude subscriptions with plenty of quota, and my own servers, so I don't want an X subscription to limit me. I want to use whatever model I want and do whatever I want. I can even switch to an open model, and none of my data goes into anyone's pocket.<p>Try it (Node 24+, macOS, Linux or Windows): the easiest way is to ask your coding agent (Claude Code, Codex, Cursor) to read docs/for-agents.md in the repo and set up Pots for you. Or by hand: npm install -g pi-durable-bot, then pots init.<p>I'd love feedback, especially on how it decides when to act."
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Pots \u2013 Open-source Grok Bot alternative, used by 6 startups for a month"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/Crokily/pi-durable-bot"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_Crokily",
+        "story_50452040",
+        "show_hn"
+      ],
+      "author": "Crokily",
+      "children": [
+        50452057
+      ],
+      "created_at": "2026-11-11T11:11:34Z",
+      "created_at_i": 1794395494,
+      "num_comments": 0,
+      "objectID": "50452040",
+      "points": 1,
+      "story_id": 50452040,
+      "story_text": "Hi HN, I&#x27;m Crokily. Pots is an AI coworker that lives in the chat your team already uses: Slack, Discord, Telegram, or any channel with a Chat SDK adapter. It is MIT-licensed and runs on a machine you give it, with the model you choose.<p>To be honest, the first time I used Grok Bot, its design really impressed me. Unlike OpenClaw before it, it was not just Claude Code connected to a chat app. It truly cared about how it works with people. It felt like a living AI assistant, and working with it was painless. That is the idea I kept learning from the whole time I built Pots: it is not an agent hooked up to a chat channel. It should be a coworker that feels alive and is comfortable to work with.<p>But Grok Bot is only Grok&#x27;s bot. Which model you get depends on your X subscription, your data and your machine are all in the cloud, and most of all, it is a standalone app, and most of its features serve that app.<p>Pots is a bit different. In Sydney I have talked with quite a few founders. Grok Bot is good, and it helps them a lot with their personal tasks. But when I asked who had actually put Grok Bot into their company&#x27;s work to make their startup team faster, nobody had. So I think Pots is in a different place from Grok Bot, and from most open-source Grok Bot alternatives: it grew out of what real startup teams need. Before I open-sourced it, 6 small startups I met at startup events had been using it with me for over a month.<p>Pots is built first for the channels startup teams already work in, not for an app of its own, so most of what it does serves the places where you actually work. The teams use Pots as a middle layer: a CEO talks ideas through with the team in chat, Pots listens, and then it builds a prototype that both sides can check. They use Pots for competitor research: because Pots runs inside their channels, it knows their product well. Not only the GitHub repo, but the team&#x27;s daily discussions and what the team cares about. Pots has been listening quietly the whole time, so it knows the product with no setup at all. It also works well with each channel: it talks to people with the channel&#x27;s own controls, like Slack and Discord buttons and cards, and when it hands over something complex, it deploys a page with its built-in server so everyone sees it in a better form.<p>So Pots is different from Grok Bot and from most open-source alternatives. It came out of what real startup teams need. Its channel features start from what each company&#x27;s work needs, and it can join your real work setup with no setup and still do well, instead of being one more app that nobody uses and that is hard to start with. And it ran in real business for a while before I cleaned it up and open-sourced it.<p>The difference from Grok Bot is also exactly why I made Pots an open-source Grok Bot alternative. I have OpenAI and Claude subscriptions with plenty of quota, and my own servers, so I don&#x27;t want an X subscription to limit me. I want to use whatever model I want and do whatever I want. I can even switch to an open model, and none of my data goes into anyone&#x27;s pocket.<p>Try it (Node 24+, macOS, Linux or Windows): the easiest way is to ask your coding agent (Claude Code, Codex, Cursor) to read docs&#x2F;for-agents.md in the repo and set up Pots for you. Or by hand: npm install -g pi-durable-bot, then pots init.<p>I&#x27;d love feedback, especially on how it decides when to act.",
+      "title": "Show HN: Pots \u2013 Open-source Grok Bot alternative, used by 6 startups for a month",
+      "updated_at": "2026-11-11T11:19:42Z",
+      "url": "https://github.com/Crokily/pi-durable-bot"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "drauschenbach"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "7 years ago I began migrating all my back-ends to Rust. Front-ends, however, remained an issue.<p>As an Ember developer for 15 years, I've been a big fan of MVC, and keeping code out of templates. Ember's HTMLbars syntax has been the thing I've leaned on to keep my templates clean and maintainable, so that I could stay focused and organized.<p>But the JS/TS toolchains were always a point of friction. As I worked on new Rust back-ends, while maintaining old Ember front-ends, I dreamed of rewriting those Ember routes, controllers, models, and adapters in type-safe idiomatic Rust.<p>The Leptos creator Greg Johnston finally gave me a nudge to get something going.<p>So after 3 years of planning, and 4 months of execution, the Auric framework is ready for public eyes.<p>It's Ember.js, re-imagined in Rust (and not just an AI port). It stays faithful to Ember, HTMLbars, and Ember Data, while leveraging Leptos to realize all of the reactive concerns (which implies Trunk for WASM packaging, and full SSR support).<p>It's open source on GitLab at:<p><a href=\"https://gitlab.com/megalithic-llc/auric-spa\" rel=\"nofollow\">https://gitlab.com/megalithic-llc/auric-spa</a><p>The sample app is the Auric website itself, which contains demo pages for all of ember-bootstrap, ember-power-select, and ember-concurrency add-ons, re-imagined in pure idiomatic Rust, backed by Actix Web based SSR. Templates and components are at /src/templates/ and /src/components/, while their code-generated Leptos counterparts are at /src/generated/views/ and /src/generated/components/.<p>Templates are up to 7x smaller than the Leptos views derived from them, thanks to the timeless elegance of HTMLbars. That seems like an important data point, now that our coding assistants threaten to automate us out of love with our webapps, by turning them into something we no longer enjoy looking at.<p>The longer back-story was published to Medium a few days ago:<p><a href=\"https://medium.com/@david_77274/ember-js-devs-welcome-to-the-rust-age-a6dad8519ea4\" rel=\"nofollow\">https://medium.com/@david_77274/ember-js-devs-welcome-to-the...</a>"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Ember.js, Re-Born in Rust"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://auric.spa"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_drauschenbach",
+        "story_50452035",
+        "show_hn"
+      ],
+      "author": "drauschenbach",
+      "created_at": "2026-11-11T11:11:13Z",
+      "created_at_i": 1794395473,
+      "num_comments": 0,
+      "objectID": "50452035",
+      "points": 1,
+      "story_id": 50452035,
+      "story_text": "7 years ago I began migrating all my back-ends to Rust. Front-ends, however, remained an issue.<p>As an Ember developer for 15 years, I&#x27;ve been a big fan of MVC, and keeping code out of templates. Ember&#x27;s HTMLbars syntax has been the thing I&#x27;ve leaned on to keep my templates clean and maintainable, so that I could stay focused and organized.<p>But the JS&#x2F;TS toolchains were always a point of friction. As I worked on new Rust back-ends, while maintaining old Ember front-ends, I dreamed of rewriting those Ember routes, controllers, models, and adapters in type-safe idiomatic Rust.<p>The Leptos creator Greg Johnston finally gave me a nudge to get something going.<p>So after 3 years of planning, and 4 months of execution, the Auric framework is ready for public eyes.<p>It&#x27;s Ember.js, re-imagined in Rust (and not just an AI port). It stays faithful to Ember, HTMLbars, and Ember Data, while leveraging Leptos to realize all of the reactive concerns (which implies Trunk for WASM packaging, and full SSR support).<p>It&#x27;s open source on GitLab at:<p><a href=\"https:&#x2F;&#x2F;gitlab.com&#x2F;megalithic-llc&#x2F;auric-spa\" rel=\"nofollow\">https:&#x2F;&#x2F;gitlab.com&#x2F;megalithic-llc&#x2F;auric-spa</a><p>The sample app is the Auric website itself, which contains demo pages for all of ember-bootstrap, ember-power-select, and ember-concurrency add-ons, re-imagined in pure idiomatic Rust, backed by Actix Web based SSR. Templates and components are at &#x2F;src&#x2F;templates&#x2F; and &#x2F;src&#x2F;components&#x2F;, while their code-generated Leptos counterparts are at &#x2F;src&#x2F;generated&#x2F;views&#x2F; and &#x2F;src&#x2F;generated&#x2F;components&#x2F;.<p>Templates are up to 7x smaller than the Leptos views derived from them, thanks to the timeless elegance of HTMLbars. That seems like an important data point, now that our coding assistants threaten to automate us out of love with our webapps, by turning them into something we no longer enjoy looking at.<p>The longer back-story was published to Medium a few days ago:<p><a href=\"https:&#x2F;&#x2F;medium.com&#x2F;@david_77274&#x2F;ember-js-devs-welcome-to-the-rust-age-a6dad8519ea4\" rel=\"nofollow\">https:&#x2F;&#x2F;medium.com&#x2F;@david_77274&#x2F;ember-js-devs-welcome-to-the...</a>",
+      "title": "Show HN: Ember.js, Re-Born in Rust",
+      "updated_at": "2026-11-11T11:15:12Z",
+      "url": "https://auric.spa"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "laysheth"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: small WireGuard mesh VPN with no coordination server"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/CLoaKY233/kith"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_laysheth",
+        "story_50451986",
+        "show_hn"
+      ],
+      "author": "laysheth",
+      "children": [
+        50451987
+      ],
+      "created_at": "2026-11-11T11:02:54Z",
+      "created_at_i": 1794394974,
+      "num_comments": 1,
+      "objectID": "50451986",
+      "points": 2,
+      "story_id": 50451986,
+      "title": "Show HN: small WireGuard mesh VPN with no coordination server",
+      "updated_at": "2026-11-11T11:17:12Z",
+      "url": "https://github.com/CLoaKY233/kith"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "bartoszrajewski"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Halyard \u2013 Mac and iPhone app for AI agents in tmux, nothing to install"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://apps.apple.com/us/app/halyard-ai-agent-terminal/id6809046638"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_bartoszrajewski",
+        "story_50451752",
+        "show_hn"
+      ],
+      "author": "bartoszrajewski",
+      "children": [
+        50451757
+      ],
+      "created_at": "2026-11-11T10:24:10Z",
+      "created_at_i": 1794392650,
+      "num_comments": 0,
+      "objectID": "50451752",
+      "points": 1,
+      "story_id": 50451752,
+      "title": "Show HN: Halyard \u2013 Mac and iPhone app for AI agents in tmux, nothing to install",
+      "updated_at": "2026-11-11T10:27:57Z",
+      "url": "https://apps.apple.com/us/app/halyard-ai-agent-terminal/id6809046638"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "franze"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Inp-analyser skill \u2013 analysis and fix your Interaction to Next Paint"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/franzenzenhofer/inp-analyser"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_franze",
+        "story_50451744",
+        "show_hn"
+      ],
+      "author": "franze",
+      "created_at": "2026-11-11T10:22:34Z",
+      "created_at_i": 1794392554,
+      "num_comments": 0,
+      "objectID": "50451744",
+      "points": 3,
+      "story_id": 50451744,
+      "title": "Show HN: Inp-analyser skill \u2013 analysis and fix your Interaction to Next Paint",
+      "updated_at": "2026-11-11T10:55:57Z",
+      "url": "https://github.com/franzenzenhofer/inp-analyser"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "humbfool2"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: A native iPhone app for robot vacuums running Valetudo"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/bsidio/OpenVaccum"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_humbfool2",
+        "story_50451717",
+        "show_hn"
+      ],
+      "author": "humbfool2",
+      "created_at": "2026-11-11T10:18:03Z",
+      "created_at_i": 1794392283,
+      "num_comments": 0,
+      "objectID": "50451717",
+      "points": 1,
+      "story_id": 50451717,
+      "title": "Show HN: A native iPhone app for robot vacuums running Valetudo",
+      "updated_at": "2026-11-11T10:22:43Z",
+      "url": "https://github.com/bsidio/OpenVaccum"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "badrasr"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: In-browser PDF compressor and sensitive data blur (zero uploads)"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://vault-pro.rashid-salimov96.workers.dev/en/tools/pdf-compress/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_badrasr",
+        "story_50451715",
+        "show_hn"
+      ],
+      "author": "badrasr",
+      "children": [
+        50451721
+      ],
+      "created_at": "2026-11-11T10:17:54Z",
+      "created_at_i": 1794392274,
+      "num_comments": 0,
+      "objectID": "50451715",
+      "points": 1,
+      "story_id": 50451715,
+      "title": "Show HN: In-browser PDF compressor and sensitive data blur (zero uploads)",
+      "updated_at": "2026-11-11T10:22:43Z",
+      "url": "https://vault-pro.rashid-salimov96.workers.dev/en/tools/pdf-compress/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "JashT14"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Canontra, deterministic semantic fingerprints for source code"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/symtrace/canontra"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_JashT14",
+        "story_50451669",
+        "show_hn"
+      ],
+      "author": "JashT14",
+      "children": [
+        50451673
+      ],
+      "created_at": "2026-11-11T10:12:55Z",
+      "created_at_i": 1794391975,
+      "num_comments": 0,
+      "objectID": "50451669",
+      "points": 1,
+      "story_id": 50451669,
+      "title": "Show HN: Canontra, deterministic semantic fingerprints for source code",
+      "updated_at": "2026-11-11T10:17:27Z",
+      "url": "https://github.com/symtrace/canontra"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "latent-9"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: 130M mutations against Solana's consensus parsers, zero crashes"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/latent-9/chainoffuzz"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_latent-9",
+        "story_50451530",
+        "show_hn"
+      ],
+      "author": "latent-9",
+      "children": [
+        50451546
+      ],
+      "created_at": "2026-11-11T09:52:41Z",
+      "created_at_i": 1794390761,
+      "num_comments": 0,
+      "objectID": "50451530",
+      "points": 2,
+      "story_id": 50451530,
+      "title": "Show HN: 130M mutations against Solana's consensus parsers, zero crashes",
+      "updated_at": "2026-11-11T11:03:58Z",
+      "url": "https://github.com/latent-9/chainoffuzz"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "ssarisen"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "I built a native Mac app that tracks my apps' keyword ranks in the App Store and Google Play every day, in 50+ countries. No account, no dashboard. It has a\n  built-in MCP server, so you can ask Claude or Cursor about your rankings.\n  $69 lifetime until Nov 30. Feedback welcome."
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Ascope \u2013 Daily App Store and Google Play keyword ranks, native Mac app"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://ascope.app/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_ssarisen",
+        "story_50451455",
+        "show_hn"
+      ],
+      "author": "ssarisen",
+      "children": [
+        50451493
+      ],
+      "created_at": "2026-11-11T09:43:56Z",
+      "created_at_i": 1794390236,
+      "num_comments": 0,
+      "objectID": "50451455",
+      "points": 2,
+      "story_id": 50451455,
+      "story_text": "I built a native Mac app that tracks my apps&#x27; keyword ranks in the App Store and Google Play every day, in 50+ countries. No account, no dashboard. It has a\n  built-in MCP server, so you can ask Claude or Cursor about your rankings.\n  $69 lifetime until Nov 30. Feedback welcome.",
+      "title": "Show HN: Ascope \u2013 Daily App Store and Google Play keyword ranks, native Mac app",
+      "updated_at": "2026-11-11T09:49:11Z",
+      "url": "https://ascope.app/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "oitihjya"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "A former colleague is writing a thesis on how DMK members raise federalism-related themes in the Lok Sabha, such as state autonomy, regional solidarity and opposition to the Union.<p>To do this, he was reading the official transcripts one debate at a time. sansad.in gives you no way to search or filter by topic.<p>So I built Torko. It parses Indian parliamentary (Lok Sabha) debates from 1999 onwards and attributes each speech to its speaker. It also tags each speech with topics. You can:<p>\u2022  filter speeches by topic, member, party or place<p>\u2022  see how often a topic is raised over the years<p>\u2022  see which topics each member raises most<p>\u2022  see which speeches mention a given place<p>Each speech links back to the original sansad.in page, so you can check the source.<p>Numbers: 173,225 speeches, 2,165 members.<p>Do check out. Open to feedback!"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Torko \u2013 Search Indian parliamentary debates by topic, member and place"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://torko.in"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_oitihjya",
+        "story_50451311",
+        "show_hn"
+      ],
+      "author": "oitihjya",
+      "created_at": "2026-11-11T09:28:00Z",
+      "created_at_i": 1794389280,
+      "num_comments": 0,
+      "objectID": "50451311",
+      "points": 2,
+      "story_id": 50451311,
+      "story_text": "A former colleague is writing a thesis on how DMK members raise federalism-related themes in the Lok Sabha, such as state autonomy, regional solidarity and opposition to the Union.<p>To do this, he was reading the official transcripts one debate at a time. sansad.in gives you no way to search or filter by topic.<p>So I built Torko. It parses Indian parliamentary (Lok Sabha) debates from 1999 onwards and attributes each speech to its speaker. It also tags each speech with topics. You can:<p>\u2022  filter speeches by topic, member, party or place<p>\u2022  see how often a topic is raised over the years<p>\u2022  see which topics each member raises most<p>\u2022  see which speeches mention a given place<p>Each speech links back to the original sansad.in page, so you can check the source.<p>Numbers: 173,225 speeches, 2,165 members.<p>Do check out. Open to feedback!",
+      "title": "Show HN: Torko \u2013 Search Indian parliamentary debates by topic, member and place",
+      "updated_at": "2026-11-11T10:10:27Z",
+      "url": "https://torko.in"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "billpg"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: WordLoom"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://wordloom.billpg.com/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_billpg",
+        "story_50451228",
+        "show_hn"
+      ],
+      "author": "billpg",
+      "children": [
+        50451419
+      ],
+      "created_at": "2026-11-11T09:14:37Z",
+      "created_at_i": 1794388477,
+      "num_comments": 2,
+      "objectID": "50451228",
+      "points": 2,
+      "story_id": 50451228,
+      "title": "Show HN: WordLoom",
+      "updated_at": "2026-11-11T09:42:26Z",
+      "url": "https://wordloom.billpg.com/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "kamilms21"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Monity \u2013 Free website change monitoring that runs on your computer"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://monity.ai/desktop/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_kamilms21",
+        "story_50451111",
+        "show_hn"
+      ],
+      "author": "kamilms21",
+      "created_at": "2026-11-11T08:53:26Z",
+      "created_at_i": 1794387206,
+      "num_comments": 0,
+      "objectID": "50451111",
+      "points": 1,
+      "story_id": 50451111,
+      "title": "Show HN: Monity \u2013 Free website change monitoring that runs on your computer",
+      "updated_at": "2026-11-11T08:58:42Z",
+      "url": "https://monity.ai/desktop/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "sadilek"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "partial",
+          "matchedWords": [
+            "show"
+          ],
+          "value": "Yeah, I know, &quot;not another AI GUI <i>rolls eyes</i>&quot;. So let me say upfront: This is <i>not</i> for you if you want to regularly review the code agents produce. But if you, like me, stopped writing code at the beginning of the year and for the most part stopped reading it a few months ago, you are my target audience, and I think there's a good chance you'll benefit from this.<p>I love directing agents to build stuff. But oh, can you get lost in parallel coding sessions. Just walls of text. Cycling through terminal windows. It feels like pair programming with multiple people at the same time. Then: Start a dev server, navigate to the place of interest, click around to test a new feature. It feels like I'm the QA department of my agents.<p>About 6 weeks ago, I reflected on this for a few days and came up with a better way. I'm sharing it because it works so well for me.<p>Main idea: I want to be the agents' engineering director. I sit in the conference room and talk to them. Give them tasks. They come back and <em>show</em> results to me. I lean back and watch and listen to demo videos (mostly) or read presentation docs (sometimes). I give feedback orally to have them iterate. Or I approve, and they carry the change to main.<p>The work is laid out as cards on a canvas. There is color to <em>show</em> state, so cards can stay put, and I can build a mental map. I mostly drive it via voice. New task: Just say it. Something off in the demo video: Hold the space bar and say it, as if you're pointing something out in a review meeting.<p>There is a coordinator in the background that sequences cards for you based on their dependencies. It also runs regular retrospectives and proposes cards to improve your setup.<p>There are many more aspects I could describe, but then this post would just be another wall of text, so instead, in the spirit of Obeya, I suggest you watch the video at the top of <a href=\"https://obeya.si\" rel=\"nofollow\">https://obeya.si</a>. It gives an introduction to Obeya, and it's an example of a demo video. All demos of Obeya's own development get published at <a href=\"https://demos.obeya.si\" rel=\"nofollow\">https://demos.obeya.si</a> if you want more examples.<p><a href=\"https://github.com/sadilek/obeya\" rel=\"nofollow\">https://github.com/sadilek/obeya</a> \u2013 free, open-source, local"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Obeya, a spatial canvas for directing coding agents"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/sadilek/obeya"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_sadilek",
+        "story_50450897",
+        "show_hn"
+      ],
+      "author": "sadilek",
+      "created_at": "2026-11-11T08:14:38Z",
+      "created_at_i": 1794384878,
+      "num_comments": 0,
+      "objectID": "50450897",
+      "points": 4,
+      "story_id": 50450897,
+      "story_text": "Yeah, I know, &quot;not another AI GUI <i>rolls eyes</i>&quot;. So let me say upfront: This is <i>not</i> for you if you want to regularly review the code agents produce. But if you, like me, stopped writing code at the beginning of the year and for the most part stopped reading it a few months ago, you are my target audience, and I think there&#x27;s a good chance you&#x27;ll benefit from this.<p>I love directing agents to build stuff. But oh, can you get lost in parallel coding sessions. Just walls of text. Cycling through terminal windows. It feels like pair programming with multiple people at the same time. Then: Start a dev server, navigate to the place of interest, click around to test a new feature. It feels like I&#x27;m the QA department of my agents.<p>About 6 weeks ago, I reflected on this for a few days and came up with a better way. I&#x27;m sharing it because it works so well for me.<p>Main idea: I want to be the agents&#x27; engineering director. I sit in the conference room and talk to them. Give them tasks. They come back and show results to me. I lean back and watch and listen to demo videos (mostly) or read presentation docs (sometimes). I give feedback orally to have them iterate. Or I approve, and they carry the change to main.<p>The work is laid out as cards on a canvas. There is color to show state, so cards can stay put, and I can build a mental map. I mostly drive it via voice. New task: Just say it. Something off in the demo video: Hold the space bar and say it, as if you&#x27;re pointing something out in a review meeting.<p>There is a coordinator in the background that sequences cards for you based on their dependencies. It also runs regular retrospectives and proposes cards to improve your setup.<p>There are many more aspects I could describe, but then this post would just be another wall of text, so instead, in the spirit of Obeya, I suggest you watch the video at the top of <a href=\"https:&#x2F;&#x2F;obeya.si\" rel=\"nofollow\">https:&#x2F;&#x2F;obeya.si</a>. It gives an introduction to Obeya, and it&#x27;s an example of a demo video. All demos of Obeya&#x27;s own development get published at <a href=\"https:&#x2F;&#x2F;demos.obeya.si\" rel=\"nofollow\">https:&#x2F;&#x2F;demos.obeya.si</a> if you want more examples.<p><a href=\"https:&#x2F;&#x2F;github.com&#x2F;sadilek&#x2F;obeya\" rel=\"nofollow\">https:&#x2F;&#x2F;github.com&#x2F;sadilek&#x2F;obeya</a> \u2013 free, open-source, local",
+      "title": "Show HN: Obeya, a spatial canvas for directing coding agents",
+      "updated_at": "2026-11-11T10:21:42Z",
+      "url": "https://github.com/sadilek/obeya"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "apmatypa88"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: BrewPage \u2013 publish HTML, JSON or files with one curl, no signup"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://brewpage.app/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_apmatypa88",
+        "story_50450854",
+        "show_hn"
+      ],
+      "author": "apmatypa88",
+      "created_at": "2026-11-11T08:03:49Z",
+      "created_at_i": 1794384229,
+      "num_comments": 0,
+      "objectID": "50450854",
+      "points": 1,
+      "story_id": 50450854,
+      "title": "Show HN: BrewPage \u2013 publish HTML, JSON or files with one curl, no signup",
+      "updated_at": "2026-11-11T08:06:11Z",
+      "url": "https://brewpage.app/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Eltmon"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Overdeck 0.74 \u2013 MCP tools for coding agents, plus phone apps"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/eltmon/overdeck/releases/tag/v0.74.0"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_Eltmon",
+        "story_50450704",
+        "show_hn"
+      ],
+      "author": "Eltmon",
+      "children": [
+        50450706
+      ],
+      "created_at": "2026-11-11T07:34:18Z",
+      "created_at_i": 1794382458,
+      "num_comments": 0,
+      "objectID": "50450704",
+      "points": 1,
+      "story_id": 50450704,
+      "title": "Show HN: Overdeck 0.74 \u2013 MCP tools for coding agents, plus phone apps",
+      "updated_at": "2026-11-11T07:35:26Z",
+      "url": "https://github.com/eltmon/overdeck/releases/tag/v0.74.0"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "mythormedicine"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "100% free | offline | no tracking | no ads<p>See where your day goes.<p>Restrict screen usage in a variety of ways - \n- take periodic breaks\n- restrict night time usage\n- restrict based on app and websites<p>and much more. Very customizable."
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Screen time monitor and self control app Tabstinence"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://tabstinence.com"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_mythormedicine",
+        "story_50450697",
+        "show_hn"
+      ],
+      "author": "mythormedicine",
+      "created_at": "2026-11-11T07:33:42Z",
+      "created_at_i": 1794382422,
+      "num_comments": 0,
+      "objectID": "50450697",
+      "points": 1,
+      "story_id": 50450697,
+      "story_text": "100% free | offline | no tracking | no ads<p>See where your day goes.<p>Restrict screen usage in a variety of ways - \n- take periodic breaks\n- restrict night time usage\n- restrict based on app and websites<p>and much more. Very customizable.",
+      "title": "Show HN: Screen time monitor and self control app Tabstinence",
+      "updated_at": "2026-11-11T07:34:42Z",
+      "url": "https://tabstinence.com"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "hanubaki"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: GraphFlow \u2013 system design diagrams that run in the browser"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://graph-flow-virid.vercel.app/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_hanubaki",
+        "story_50450624",
+        "show_hn"
+      ],
+      "author": "hanubaki",
+      "children": [
+        50450629
+      ],
+      "created_at": "2026-11-11T07:24:26Z",
+      "created_at_i": 1794381866,
+      "num_comments": 0,
+      "objectID": "50450624",
+      "points": 2,
+      "story_id": 50450624,
+      "title": "Show HN: GraphFlow \u2013 system design diagrams that run in the browser",
+      "updated_at": "2026-11-11T07:56:11Z",
+      "url": "https://graph-flow-virid.vercel.app/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "bonguynvan"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "Ask <em>HN</em>: <em>How</em> do you share an open-source project without being treated as spam?"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_bonguynvan",
+        "story_50450480",
+        "ask_hn"
+      ],
+      "author": "bonguynvan",
+      "children": [
+        50451179,
+        50452092
+      ],
+      "created_at": "2026-11-11T07:01:50Z",
+      "created_at_i": 1794380510,
+      "num_comments": 2,
+      "objectID": "50450480",
+      "points": 3,
+      "story_id": 50450480,
+      "title": "Ask HN: How do you share an open-source project without being treated as spam?",
+      "updated_at": "2026-11-11T11:33:27Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "lokinpendawa"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Prolog-Powered Reverse WAF Logic Perimeter"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://prologwaf.site/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_lokinpendawa",
+        "story_50450290",
+        "show_hn"
+      ],
+      "author": "lokinpendawa",
+      "created_at": "2026-11-11T06:26:14Z",
+      "created_at_i": 1794378374,
+      "num_comments": 0,
+      "objectID": "50450290",
+      "points": 1,
+      "story_id": 50450290,
+      "title": "Show HN: Prolog-Powered Reverse WAF Logic Perimeter",
+      "updated_at": "2026-11-11T06:31:42Z",
+      "url": "https://prologwaf.site/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "DRLogvinovich"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Autonomous script testing 1.58M Harvard MPC orbits without Planet Nine"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/Dr-Logvinovich/IT3-Solar-System-Quantum-Architecture/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_DRLogvinovich",
+        "story_50450112",
+        "show_hn"
+      ],
+      "author": "DRLogvinovich",
+      "created_at": "2026-11-11T05:50:14Z",
+      "created_at_i": 1794376214,
+      "num_comments": 0,
+      "objectID": "50450112",
+      "points": 4,
+      "story_id": 50450112,
+      "title": "Show HN: Autonomous script testing 1.58M Harvard MPC orbits without Planet Nine",
+      "updated_at": "2026-11-11T10:21:42Z",
+      "url": "https://github.com/Dr-Logvinovich/IT3-Solar-System-Quantum-Architecture/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "HNdev1995"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "I have spent countless years learning and reading about personal finance. This website felt like a good way to redirect people to one place for the repeated questions like &quot;But tech stocks&quot;, &quot;Waiting for a crash&quot;, &quot;What about crypto, real estate, or gold?&quot;, etc.<p>Would appreciate some thoughts and feedback."
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Buy the whole stock market in one cheap fund and get on with your life"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://vtchill.com/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_HNdev1995",
+        "story_50450104",
+        "show_hn"
+      ],
+      "author": "HNdev1995",
+      "children": [
+        50451182,
+        50450512,
+        50451997
+      ],
+      "created_at": "2026-11-11T05:48:43Z",
+      "created_at_i": 1794376123,
+      "num_comments": 3,
+      "objectID": "50450104",
+      "points": 4,
+      "story_id": 50450104,
+      "story_text": "I have spent countless years learning and reading about personal finance. This website felt like a good way to redirect people to one place for the repeated questions like &quot;But tech stocks&quot;, &quot;Waiting for a crash&quot;, &quot;What about crypto, real estate, or gold?&quot;, etc.<p>Would appreciate some thoughts and feedback.",
+      "title": "Show HN: Buy the whole stock market in one cheap fund and get on with your life",
+      "updated_at": "2026-11-11T11:05:26Z",
+      "url": "https://vtchill.com/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "adrbn"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "I grew up with Black Ops 2 and wanted to see if I could make it work on my 2020 MacBook Pro. So I used Claude Opus 5.5 to create a tool that converts your copy of the game (from Steam) to a native ARM64 Mac app, with almost 60fps in all areas. The whole game is statically recompilated ahead-of-time (AOT) and does not use any emulator whatsoever, be it Wine, Crossover or Rosetta. The best thing is the performance, although some heat issues are still to fix. You get to play the whole Campaign, local Multiplayer (with bots) and local Zombies (all DLCs maps; you need to have them in your Steam library obviously) at about 60fps. Split-screen was not in the PC version, but I've been working on it lately; it's coming soon! LAN mode is on the roadmap for later too :)"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Black Ops II statically recompiled to native ARM64 macOS"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/adrbn/bo2-mac"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_adrbn",
+        "story_50449891",
+        "show_hn",
+        "front_page"
+      ],
+      "author": "adrbn",
+      "children": [
+        50452186,
+        50451271,
+        50451806
+      ],
+      "created_at": "2026-11-11T04:56:47Z",
+      "created_at_i": 1794373007,
+      "num_comments": 4,
+      "objectID": "50449891",
+      "points": 37,
+      "story_id": 50449891,
+      "story_text": "I grew up with Black Ops 2 and wanted to see if I could make it work on my 2020 MacBook Pro. So I used Claude Opus 5.5 to create a tool that converts your copy of the game (from Steam) to a native ARM64 Mac app, with almost 60fps in all areas. The whole game is statically recompilated ahead-of-time (AOT) and does not use any emulator whatsoever, be it Wine, Crossover or Rosetta. The best thing is the performance, although some heat issues are still to fix. You get to play the whole Campaign, local Multiplayer (with bots) and local Zombies (all DLCs maps; you need to have them in your Steam library obviously) at about 60fps. Split-screen was not in the PC version, but I&#x27;ve been working on it lately; it&#x27;s coming soon! LAN mode is on the roadmap for later too :)",
+      "title": "Show HN: Black Ops II statically recompiled to native ARM64 macOS",
+      "updated_at": "2026-11-11T11:53:11Z",
+      "url": "https://github.com/adrbn/bo2-mac"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "keivalya"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Somo \u2013 home robot with emotional intelligence"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://somo.keivalya.com/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_keivalya",
+        "story_50449710",
+        "show_hn"
+      ],
+      "author": "keivalya",
+      "children": [
+        50449721
+      ],
+      "created_at": "2026-11-11T04:21:12Z",
+      "created_at_i": 1794370872,
+      "num_comments": 1,
+      "objectID": "50449710",
+      "points": 1,
+      "story_id": 50449710,
+      "title": "Show HN: Somo \u2013 home robot with emotional intelligence",
+      "updated_at": "2026-11-11T04:26:11Z",
+      "url": "https://somo.keivalya.com/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "greybox555"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "Use this to quickly get sleepy without taking any medicinal pill or long form meditation type things (It is as short as 7-minute session).<p>Easy to use. Simply close your eyes and imagine the micro-scenarios you hear. Like if you hear &quot;moonlight on a white flower&quot;, imagine that scenario until you hear the next one.<p>(You may also use it to easily break nightly doomscrolling habit)"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Fastsleep.app \u2013 Imagine micro-scenarios to get sleepy"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://fastsleep.app/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_greybox555",
+        "story_50449576",
+        "show_hn"
+      ],
+      "author": "greybox555",
+      "children": [
+        50449577,
+        50449714
+      ],
+      "created_at": "2026-11-11T03:54:46Z",
+      "created_at_i": 1794369286,
+      "num_comments": 1,
+      "objectID": "50449576",
+      "points": 4,
+      "story_id": 50449576,
+      "story_text": "Use this to quickly get sleepy without taking any medicinal pill or long form meditation type things (It is as short as 7-minute session).<p>Easy to use. Simply close your eyes and imagine the micro-scenarios you hear. Like if you hear &quot;moonlight on a white flower&quot;, imagine that scenario until you hear the next one.<p>(You may also use it to easily break nightly doomscrolling habit)",
+      "title": "Show HN: Fastsleep.app \u2013 Imagine micro-scenarios to get sleepy",
+      "updated_at": "2026-11-11T04:44:11Z",
+      "url": "https://fastsleep.app/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "wilgrobe"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: A trim size and margin calculator for self-published books"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://storiesden.com/trim-size-calculator"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_wilgrobe",
+        "story_50449479",
+        "show_hn"
+      ],
+      "author": "wilgrobe",
+      "children": [
+        50449491
+      ],
+      "created_at": "2026-11-11T03:33:38Z",
+      "created_at_i": 1794368018,
+      "num_comments": 0,
+      "objectID": "50449479",
+      "points": 3,
+      "story_id": 50449479,
+      "title": "Show HN: A trim size and margin calculator for self-published books",
+      "updated_at": "2026-11-11T04:41:41Z",
+      "url": "https://storiesden.com/trim-size-calculator"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "mayyah42"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "In 1995 I co-built CRAYON (CReAte Your Own Newspaper) - the first personalized news service on the web. 650k people made papers. The Perl CGI site ran, barely, for 31 years. I've now rebuilt it: stories ranked by independent-source count instead of an editor or engagement algorithm, every side of every story on one page. Your 1996 password still works, and every subscriber can open their original paper as a time capsule - dead sources marked &quot;lost to time.&quot;"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Crayon, the web's first personalized newspaper (1995), relaunched"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://crayon.net/relaunch"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_mayyah42",
+        "story_50449339",
+        "show_hn"
+      ],
+      "author": "mayyah42",
+      "children": [
+        50449851,
+        50449771,
+        50449370
+      ],
+      "created_at": "2026-11-11T03:09:07Z",
+      "created_at_i": 1794366547,
+      "num_comments": 1,
+      "objectID": "50449339",
+      "points": 4,
+      "story_id": 50449339,
+      "story_text": "In 1995 I co-built CRAYON (CReAte Your Own Newspaper) - the first personalized news service on the web. 650k people made papers. The Perl CGI site ran, barely, for 31 years. I&#x27;ve now rebuilt it: stories ranked by independent-source count instead of an editor or engagement algorithm, every side of every story on one page. Your 1996 password still works, and every subscriber can open their original paper as a time capsule - dead sources marked &quot;lost to time.&quot;",
+      "title": "Show HN: Crayon, the web's first personalized newspaper (1995), relaunched",
+      "updated_at": "2026-11-11T11:11:28Z",
+      "url": "https://crayon.net/relaunch"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "naklecha"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "I trained a speech-to-speech model last night, inspired by Dessa. I'm calling the model caramel-1. The model learned from recordings of people talking and nothing else, and has never seen a single word of text. The code, the training recipe and the weights are open source.<p>caramel-1 sounds incredibly human. Most of what caramel-1 says doesn't make sense yet, but the sentences make a little more sense every time I add more data.<p>Caramel is fast. On a GPU, caramel-1 makes 1 second of audio in about 0.09 seconds, which is fast enough to talk to a real person live. It even works on my MacBook Pro (M3 Pro): running two copies at once, it makes 1 second of conversation in about 0.25 seconds."
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Caramel: a speech-to-speech conversation model trained only on audio"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://naklecha.com/research/caramel-1"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_naklecha",
+        "story_50449320",
+        "show_hn"
+      ],
+      "author": "naklecha",
+      "created_at": "2026-11-11T03:05:24Z",
+      "created_at_i": 1794366324,
+      "num_comments": 0,
+      "objectID": "50449320",
+      "points": 4,
+      "story_id": 50449320,
+      "story_text": "I trained a speech-to-speech model last night, inspired by Dessa. I&#x27;m calling the model caramel-1. The model learned from recordings of people talking and nothing else, and has never seen a single word of text. The code, the training recipe and the weights are open source.<p>caramel-1 sounds incredibly human. Most of what caramel-1 says doesn&#x27;t make sense yet, but the sentences make a little more sense every time I add more data.<p>Caramel is fast. On a GPU, caramel-1 makes 1 second of audio in about 0.09 seconds, which is fast enough to talk to a real person live. It even works on my MacBook Pro (M3 Pro): running two copies at once, it makes 1 second of conversation in about 0.25 seconds.",
+      "title": "Show HN: Caramel: a speech-to-speech conversation model trained only on audio",
+      "updated_at": "2026-11-11T10:04:41Z",
+      "url": "https://naklecha.com/research/caramel-1"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "khoonie"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Daily GPU Rental Prices Across AWS, Azure, RunPod and Vast.ai"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://taipeiledger.com/gpu/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_khoonie",
+        "story_50449232",
+        "show_hn"
+      ],
+      "author": "khoonie",
+      "children": [
+        50449614,
+        50449257,
+        50449853
+      ],
+      "created_at": "2026-11-11T02:50:01Z",
+      "created_at_i": 1794365401,
+      "num_comments": 2,
+      "objectID": "50449232",
+      "points": 11,
+      "story_id": 50449232,
+      "title": "Show HN: Daily GPU Rental Prices Across AWS, Azure, RunPod and Vast.ai",
+      "updated_at": "2026-11-11T11:45:12Z",
+      "url": "https://taipeiledger.com/gpu/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "ddxv"
+        },
+        "story_text": {
+          "fullyHighlighted": false,
+          "matchLevel": "partial",
+          "matchedWords": [
+            "show"
+          ],
+          "value": "I spend a lot of time looking at these two open data resources, which I'm sure many of you do as well:<p>Open Router Rankings, especially the first raw tokens per week by model (first chart)<p>https://openrouter.ai/rankings<p>And also Ramp AI Index token volume by model maker<p>https://ramp.com/data/ai-index?metric=token-volume&amp;detail=maker&amp;mode=volume<p>What I can never square with these two charts is how they affect each other?<p>One of my biggest questions, is why does Ramp <i>only</i> really <em>show</em> Anthropic/OpenAI/X?<p>There must be hundreds of their companies spending large amounts on OpenRouter, but this doesn't seem to <em>show</em> up in any of their reports.<p>Perhaps since OpenRouter is an aggregator of models, Ramp can't figure out how $1 of spend is used, Ramp can't see which model it was spent on?<p>But still, they could at least have included OpenRouter and others as an &quot;aggregator&quot; or something to give an idea of the marketshare and growth?<p>Does anyone know any public datasets that help merge these two? Or have a better way of understanding how they fit together?"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "partial",
+          "matchedWords": [
+            "hn"
+          ],
+          "value": "Ask <em>HN</em>: Why doesn't Ramp AI Index include OpenRouter or other aggregators?"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_ddxv",
+        "story_50449024",
+        "ask_hn"
+      ],
+      "author": "ddxv",
+      "children": [
+        50451301
+      ],
+      "created_at": "2026-11-11T02:12:47Z",
+      "created_at_i": 1794363167,
+      "num_comments": 1,
+      "objectID": "50449024",
+      "points": 4,
+      "story_id": 50449024,
+      "story_text": "I spend a lot of time looking at these two open data resources, which I&#x27;m sure many of you do as well:<p>Open Router Rankings, especially the first raw tokens per week by model (first chart)<p>https:&#x2F;&#x2F;openrouter.ai&#x2F;rankings<p>And also Ramp AI Index token volume by model maker<p>https:&#x2F;&#x2F;ramp.com&#x2F;data&#x2F;ai-index?metric=token-volume&amp;detail=maker&amp;mode=volume<p>What I can never square with these two charts is how they affect each other?<p>One of my biggest questions, is why does Ramp <i>only</i> really show Anthropic&#x2F;OpenAI&#x2F;X?<p>There must be hundreds of their companies spending large amounts on OpenRouter, but this doesn&#x27;t seem to show up in any of their reports.<p>Perhaps since OpenRouter is an aggregator of models, Ramp can&#x27;t figure out how $1 of spend is used, Ramp can&#x27;t see which model it was spent on?<p>But still, they could at least have included OpenRouter and others as an &quot;aggregator&quot; or something to give an idea of the marketshare and growth?<p>Does anyone know any public datasets that help merge these two? Or have a better way of understanding how they fit together?",
+      "title": "Ask HN: Why doesn't Ramp AI Index include OpenRouter or other aggregators?",
+      "updated_at": "2026-11-11T10:18:26Z"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "yaoke259"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: A company running in an AI harness"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://restless.run/"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_yaoke259",
+        "story_50448988",
+        "show_hn"
+      ],
+      "author": "yaoke259",
+      "children": [
+        50449157,
+        50451064,
+        50449143
+      ],
+      "created_at": "2026-11-11T02:06:59Z",
+      "created_at_i": 1794362819,
+      "num_comments": 4,
+      "objectID": "50448988",
+      "points": 4,
+      "story_id": 50448988,
+      "title": "Show HN: A company running in an AI harness",
+      "updated_at": "2026-11-11T10:12:22Z",
+      "url": "https://restless.run/"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "cleobuline"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: HC \u2013 a HyperCard clone that runs original stacks on today's Macs"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://hc.labynet.fr/en.html"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_cleobuline",
+        "story_50448850",
+        "show_hn"
+      ],
+      "author": "cleobuline",
+      "created_at": "2026-11-11T01:45:22Z",
+      "created_at_i": 1794361522,
+      "num_comments": 0,
+      "objectID": "50448850",
+      "points": 4,
+      "story_id": 50448850,
+      "title": "Show HN: HC \u2013 a HyperCard clone that runs original stacks on today's Macs",
+      "updated_at": "2026-11-11T08:52:11Z",
+      "url": "https://hc.labynet.fr/en.html"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "kbr-"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Kotlean: write Android apps in Lean"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/kbr-/kotlean"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_kbr-",
+        "story_50448775",
+        "show_hn"
+      ],
+      "author": "kbr-",
+      "children": [
+        50449013
+      ],
+      "created_at": "2026-11-11T01:33:41Z",
+      "created_at_i": 1794360821,
+      "num_comments": 0,
+      "objectID": "50448775",
+      "points": 1,
+      "story_id": 50448775,
+      "title": "Show HN: Kotlean: write Android apps in Lean",
+      "updated_at": "2026-11-11T02:12:26Z",
+      "url": "https://github.com/kbr-/kotlean"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "kagouhui"
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Broken links silently waste your Google crawl budget"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://sitetoolsbox.com/article.php?id=55"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_kagouhui",
+        "story_50448736",
+        "show_hn"
+      ],
+      "author": "kagouhui",
+      "children": [
+        50448738,
+        50448742
+      ],
+      "created_at": "2026-11-11T01:29:28Z",
+      "created_at_i": 1794360568,
+      "num_comments": 0,
+      "objectID": "50448736",
+      "points": 1,
+      "story_id": 50448736,
+      "title": "Show HN: Broken links silently waste your Google crawl budget",
+      "updated_at": "2026-11-11T05:01:41Z",
+      "url": "https://sitetoolsbox.com/article.php?id=55"
+    },
+    {
+      "_highlightResult": {
+        "author": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "khalidsheet"
+        },
+        "story_text": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "One binary to run and you have a full backend at your fingertips: a database with a REST API, sign-in, realtime, files, server-side hooks and jobs, on SQLite or Postgres. It's MIT licensed.\nYou can try the demo at <a href=\"https://demo.vaultbase.sh\" rel=\"nofollow\">https://demo.vaultbase.sh</a> (the login is filled in, and it resets every hour).\nI built it to ship fast. I always tend to write the same logic for any new project, whether it's a side project or a small to medium project for a client. I wanted something my friends and I could work with fast, try new things with, and that's easy to use. Then it became something I really wanted to work on and make as complete as I can for any type of backend.\nAs of writing this post it has 80 releases since May this year and is backed by more than 2,800 tests. I also run security reviews with Claude and fix what they find. It hasn't had an outside audit yet.\nIt was built with the help of Claude, from the codebase to the documentation and fact-checking it against the code. Claude helped speed up the pace, find bugs, and write tests.\nVaultbase is pre-1.0, so expect some bugs and issues here and there. I'm working hard to fix each and every one of them.\nThank you for taking the time to read this. I'd really appreciate any feedback, even if you didn't like Vaultbase. The demo is yours to try, and it's two commands to run locally."
+        },
+        "title": {
+          "fullyHighlighted": false,
+          "matchLevel": "full",
+          "matchedWords": [
+            "show",
+            "hn"
+          ],
+          "value": "<em>Show</em> <em>HN</em>: Vaultbase \u2013 a self-hosted back end in a single binary"
+        },
+        "url": {
+          "matchLevel": "none",
+          "matchedWords": [],
+          "value": "https://github.com/vaultbase-sh/vaultbase"
+        }
+      },
+      "_tags": [
+        "story",
+        "author_khalidsheet",
+        "story_50448562",
+        "show_hn"
+      ],
+      "author": "khalidsheet",
+      "created_at": "2026-11-11T01:07:35Z",
+      "created_at_i": 1794359255,
+      "num_comments": 0,
+      "objectID": "50448562",
+      "points": 2,
+      "story_id": 50448562,
+      "story_text": "One binary to run and you have a full backend at your fingertips: a database with a REST API, sign-in, realtime, files, server-side hooks and jobs, on SQLite or Postgres. It&#x27;s MIT licensed.\nYou can try the demo at <a href=\"https:&#x2F;&#x2F;demo.vaultbase.sh\" rel=\"nofollow\">https:&#x2F;&#x2F;demo.vaultbase.sh</a> (the login is filled in, and it resets every hour).\nI built it to ship fast. I always tend to write the same logic for any new project, whether it&#x27;s a side project or a small to medium project for a client. I wanted something my friends and I could work with fast, try new things with, and that&#x27;s easy to use. Then it became something I really wanted to work on and make as complete as I can for any type of backend.\nAs of writing this post it has 80 releases since May this year and is backed by more than 2,800 tests. I also run security reviews with Claude and fix what they find. It hasn&#x27;t had an outside audit yet.\nIt was built with the help of Claude, from the codebase to the documentation and fact-checking it against the code. Claude helped speed up the pace, find bugs, and write tests.\nVaultbase is pre-1.0, so expect some bugs and issues here and there. I&#x27;m working hard to fix each and every one of them.\nThank you for taking the time to read this. I&#x27;d really appreciate any feedback, even if you didn&#x27;t like Vaultbase. The demo is yours to try, and it&#x27;s two commands to run locally.",
+      "title": "Show HN: Vaultbase \u2013 a self-hosted back end in a single binary",
+      "updated_at": "2026-11-11T02:14:56Z",
+      "url": "https://github.com/vaultbase-sh/vaultbase"
+    }
+  ],
+  "hitsPerPage": 40,
+  "nbHits": 509111,
+  "nbPages": 25,
+  "page": 0,
+  "params": "query=Show+HN&tags=story&hitsPerPage=40&advancedSyntax=true&analyticsTags=backend",
+  "processingTimeMS": 11,
+  "processingTimingsMS": {
+    "_request": {
+      "roundTrip": 23
+    },
+    "afterFetch": {
+      "format": {
+        "highlighting": 1,
+        "total": 1
+      }
+    },
+    "fetch": {
+      "query": 3,
+      "scanning": 7,
+      "total": 11
+    },
+    "total": 11
+  },
+  "query": "Show HN",
+  "serverTimeMS": 13
+}

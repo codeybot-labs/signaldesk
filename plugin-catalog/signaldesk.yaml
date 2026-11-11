@@ -1,0 +1,34 @@
+name: signaldesk
+title: SignalDesk
+repo: https://github.com/codeybot-labs/signaldesk
+sha: "REPLACE_WITH_40_CHAR_COMMIT_SHA_AFTER_PUSH"
+version: "0.1.0"
+description: "Draft-first lead desk for founders and marketers: scan public hiring and launch signals (HN Who is hiring, YC hiring, Show HN, new YC companies), score them against your ICP, draft outreach, and never send without in-plugin approval. Cron and unattended runs fail closed. Disclosure — fetches public JSON from Algolia HN Search and the yc-oss static API; optional DNS MX lookups (UDP only, no SMTP probing); lead data lives in $HERMES_HOME/plugin-data/signaldesk/; drafts use the host LLM when available otherwise a local template; SignalDesk never transmits email (it writes a local .eml / mailto after approval, or the user may use a Hermes email tool which the pre_tool_call hook blocks unless the lead is approved and the session is interactive); no telemetry; no third-party mail APIs; no paid data providers required."
+maintainer: codeybot-labs
+tier: community
+category: automation
+requires_hermes: ">=0.22.0"
+docs_url: https://github.com/codeybot-labs/signaldesk#readme
+readme: true
+platforms: []
+known_issues:
+  - "Product Hunt and BetaList sources are not shipped in 0.1.0; the source registry is ready for a later key-gated addition."
+  - "Show HN posts hosted only on GitHub often have no company inbox, so those leads are scored but usually have no contact."
+  - "Offline demo and tests use bundled fixtures; a live scan needs outbound HTTPS to Algolia and yc-oss.github.io."
+capabilities:
+  provides_tools:
+    - signaldesk_set_icp
+    - signaldesk_scan
+    - signaldesk_list
+    - signaldesk_draft
+    - signaldesk_approve
+    - signaldesk_mark
+    - signaldesk_followups
+    - signaldesk_export_csv
+    - signaldesk_sources
+    - signaldesk_prepare_send
+    - signaldesk_board
+  provides_hooks:
+    - pre_tool_call
+  provides_middleware: []
+  requires_env: []
