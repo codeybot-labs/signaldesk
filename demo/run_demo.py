@@ -97,9 +97,10 @@ def main() -> int:
     prepared = _load(tools.signaldesk_prepare_send({"lead_id": pick["id"]}))
     print("== 7. Prepare send sent=false eml=", prepared.get("eml_path"))
 
+    from boardhtml import render_board
     board_path = out_dir / "board.html"
-    board = _load(tools.signaldesk_board({"path": str(board_path)}))
-    print("== 8. Board:", board.get("path"))
+    dest = render_board(board_path)
+    print("== 8. Board:", dest)
     (out_dir / "summary.json").write_text(
         json.dumps(
             {

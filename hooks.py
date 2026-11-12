@@ -99,7 +99,7 @@ def make_pre_tool_call(ctx: Any):
                 "action": "block",
                 "message": (
                     "SignalDesk blocked a send: no approved lead matches this recipient. "
-                    "Draft with signaldesk_draft, then signaldesk_approve, and only then send."
+                    "Draft with signaldesk_draft, then approve from the board, Desktop, or /signaldesk approve <id>, and only then send."
                 ),
             }
         except Exception:

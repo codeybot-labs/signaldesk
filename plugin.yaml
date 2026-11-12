@@ -1,6 +1,6 @@
 name: signaldesk
 version: "0.2.0"
-description: "Draft-first lead desk: scan public hiring and launch signals (HN Who is hiring, YC hiring, Show HN, new YC companies) and local businesses on an OpenStreetMap map (LocalLead Map), score them against your ICP, draft outreach, and never send without in-plugin approval. Cron and unattended runs fail closed."
+description: "Draft-first lead desk: scan public hiring and launch signals (HN Who is hiring, YC hiring, Show HN, new YC companies) and local businesses on an OpenStreetMap map (LocalLead Map), score them against your ICP, draft outreach, and never send without user approval (board, Desktop, or /signaldesk approve). The model cannot approve a lead. Cron and unattended runs fail closed."
 author: codeybot-labs
 license: MIT
 homepage: https://github.com/codeybot-labs/signaldesk
@@ -10,7 +10,6 @@ provides_tools:
   - signaldesk_scan
   - signaldesk_list
   - signaldesk_draft
-  - signaldesk_approve
   - signaldesk_mark
   - signaldesk_followups
   - signaldesk_export_csv

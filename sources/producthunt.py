@@ -34,14 +34,13 @@ query SignalDeskPosts {
 
 
 def _token() -> str:
+    # Only Hermes secret_scope. Do not fall back to process env, which can
+    # pick up another profile's token under a multi-profile gateway.
     try:
         from agent.secret_scope import get_secret
-        tok = (get_secret("PRODUCTHUNT_TOKEN") or "").strip()
-        if tok:
-            return tok
+        return (get_secret("PRODUCTHUNT_TOKEN") or "").strip()
     except Exception:
-        pass
-    return (os.environ.get("PRODUCTHUNT_TOKEN") or "").strip()
+        return ""
 
 
 def build():
@@ -60,7 +59,7 @@ class ProductHuntSource:
 
     def available(self) -> tuple[bool, str]:
         if not _token():
-            return False, "optional — set PRODUCTHUNT_TOKEN (Hermes secret or env) to enable"
+            return False, "optional — set PRODUCTHUNT_TOKEN through Hermes secret_scope to enable"
         return True, "Product Hunt GraphQL v2 (token present)"
 
     def fetch(self) -> list[Any]:

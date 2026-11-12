@@ -80,7 +80,7 @@ APPROVE = {
     "name": "signaldesk_approve",
     "description": (
         "Mark a drafted (or qualified) lead as approved for outreach. "
-        "This is the in-plugin approval gate. It does not send a message."
+        "User-only gate (board, Desktop, or /signaldesk approve). It does not send a message."
     ),
     "parameters": {
         "type": "object",
@@ -98,7 +98,7 @@ MARK = {
         "type": "object",
         "properties": {
             "lead_id": {"type": "string"},
-            "stage": {"type": "string", "description": "sent|replied|won|lost (also allowed: qualified|drafted|approved)."},
+            "stage": {"type": "string", "description": "sent|replied|won|lost (also allowed: qualified|drafted). stage=approved is refused; approval is user-only."},
             "notes": {"type": "string"},
             "followed_up": {"type": "boolean", "description": "Record that you sent a follow-up today (resets the follow-up timer on a sent lead)."},
         },
@@ -152,13 +152,8 @@ PREPARE_SEND = {
 
 BOARD = {
     "name": "signaldesk_board",
-    "description": "Regenerate the standalone HTML pipeline board and return its file path.",
-    "parameters": {
-        "type": "object",
-        "properties": {
-            "path": {"type": "string", "description": "Optional destination path. Defaults to the plugin data dir."},
-        },
-    },
+    "description": "Regenerate the standalone HTML pipeline board under the plugin data directory and return its file path.",
+    "parameters": {"type": "object", "properties": {}},
 }
 
 MAP_SCAN = {
@@ -182,4 +177,4 @@ MAP_SCAN = {
     },
 }
 
-ALL_SCHEMAS = [SET_ICP, SCAN, LIST, DRAFT, APPROVE, MARK, FOLLOWUPS, EXPORT, SOURCES, PREPARE_SEND, BOARD, MAP_SCAN]
+ALL_SCHEMAS = [SET_ICP, SCAN, LIST, DRAFT, MARK, FOLLOWUPS, EXPORT, SOURCES, PREPARE_SEND, BOARD, MAP_SCAN]

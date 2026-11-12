@@ -169,13 +169,16 @@ def signaldesk_mark(args: dict, **kwargs) -> str:
             return _err("Lead not found")
         stage = (args.get("stage") or "").strip().lower()
         if stage:
+            if stage == "approved":
+                return _err(
+                    "Approval is user-only. Use the board, Desktop, or /signaldesk approve <id>.",
+                    lead_id=lead.id,
+                )
             if stage not in STAGES:
                 return _err(f"Unknown stage {stage!r}", allowed=list(STAGES))
             lead.stage = stage
             if stage == "sent" and not lead.sent_at:
                 lead.sent_at = _now()
-            if stage == "approved" and not lead.approved_at:
-                lead.approved_at = _now()
         if args.get("followed_up"):
             if lead.stage not in {"sent", "replied"}:
                 return _err("Only sent leads can be marked as followed up.", stage=lead.stage)
@@ -290,7 +293,7 @@ def signaldesk_prepare_send(args: dict, **kwargs) -> str:
             return _err("Lead not found")
         if lead.stage not in SENDABLE_STAGES and lead.stage != "approved":
             return _err(
-                "Lead is not approved. Call signaldesk_approve first. Nothing was written or sent.",
+                "Lead is not approved. Approve it from the board, Desktop, or /signaldesk approve <id>. Nothing was written or sent.",
                 stage=lead.stage,
             )
         if not lead.draft_body:
@@ -319,8 +322,9 @@ def signaldesk_prepare_send(args: dict, **kwargs) -> str:
 
 def signaldesk_board(args: dict, **kwargs) -> str:
     try:
-        dest = (args or {}).get("path")
-        path = render_board(Path(dest) if dest else None)
+        # Always write under data_root(). A model-supplied path is ignored
+        # so this tool cannot overwrite arbitrary files.
+        path = render_board()
         return _ok(ok=True, path=str(path))
     except Exception as exc:
         return _err(f"Board render failed: {exc}")

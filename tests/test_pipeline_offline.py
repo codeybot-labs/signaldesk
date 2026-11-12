@@ -66,10 +66,13 @@ def test_draft_approve_prepare_send_and_board(tmp_path):
     assert prepared["ok"] is True
     assert prepared["sent"] is False
     assert Path(prepared["eml_path"]).is_file()
-    board_path = tmp_path / "board.html"
-    board = json.loads(tools.signaldesk_board({"path": str(board_path)}))
+    board = json.loads(tools.signaldesk_board({"path": str(tmp_path / "evil.html")}))
     assert board["ok"] is True
-    html = Path(board["path"]).read_text(encoding="utf-8")
+    html_path = Path(board["path"])
+    assert html_path.is_file()
+    assert html_path.parent.resolve() == (tmp_path / "data").resolve()
+    assert not (tmp_path / "evil.html").exists()
+    html = html_path.read_text(encoding="utf-8")
     assert "SignalDesk" in html
     assert lead.company in html
 

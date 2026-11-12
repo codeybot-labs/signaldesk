@@ -27,14 +27,17 @@ _BLUEPRINT_PROMPT = """You are running a SignalDesk catch-up. Do not send any ou
 3. Call signaldesk_list with stage=qualified and a short limit (10).
 4. Summarize the top 5 new or qualified leads: company, signal, score, and why it matched the ICP.
 5. If the user has an offer configured, mention that drafts can be written with signaldesk_draft, but do not draft everything automatically.
-6. Remind the user that nothing is sent until they call signaldesk_approve in an interactive session.
+6. Remind the user that nothing is sent until they approve a lead on the board, in Desktop, or with /signaldesk approve <id>.
 If a tool errors, report it and stop — do not retry sends, and never call email or SMTP tools.
 """
 
 
 def _slash_signaldesk(raw_args: str) -> str:
-    arg = (raw_args or "").strip().lower()
-    if arg in {"", "status", "help"}:
+    raw = (raw_args or "").strip()
+    parts = raw.split(None, 1)
+    verb = (parts[0] if parts else "").lower()
+    rest = parts[1].strip() if len(parts) > 1 else ""
+    if verb in {"", "status", "help"}:
         try:
             icp = load_icp()
             counts = counts_by_stage()
@@ -44,13 +47,13 @@ def _slash_signaldesk(raw_args: str) -> str:
                 "SignalDesk — draft-first lead desk",
                 f"Leads: {total}  " + "  ".join(f"{k}={v}" for k, v in counts.items() if v),
                 f"ICP offer: {offer}",
-                "Commands: /signaldesk status | scan | board",
-                "Nothing is sent without signaldesk_approve in an interactive session.",
+                "Commands: /signaldesk status | scan | board | approve <id>",
+                "Nothing is sent until you approve a lead on the board, in Desktop, or with /signaldesk approve <id>.",
             ]
             return "\n".join(lines)
         except Exception as exc:
             return f"SignalDesk status failed: {exc}"
-    if arg == "scan":
+    if verb == "scan":
         result = tools.signaldesk_scan({"kind": "all"})
         try:
             data = json.loads(result)
@@ -61,14 +64,26 @@ def _slash_signaldesk(raw_args: str) -> str:
             )
         except Exception:
             return result
-    if arg == "board":
+    if verb == "board":
         result = tools.signaldesk_board({})
         try:
             data = json.loads(result)
             return f"Board written to {data.get('path')}"
         except Exception:
             return result
-    return "Usage: /signaldesk [status|scan|board]"
+    if verb == "approve":
+        if not rest:
+            return "Usage: /signaldesk approve <lead_id>"
+        result = tools.signaldesk_approve({"lead_id": rest})
+        try:
+            data = json.loads(result)
+            if data.get("ok"):
+                lead = data.get("lead") or {}
+                return f"Approved {lead.get('company') or rest}. Nothing was sent."
+            return data.get("error") or result
+        except Exception:
+            return result
+    return "Usage: /signaldesk [status|scan|board|approve <id>]"
 
 
 def register(ctx):
@@ -84,8 +99,8 @@ def register(ctx):
     ctx.register_command(
         "signaldesk",
         handler=_slash_signaldesk,
-        description="SignalDesk status, scan, or regenerate the HTML board",
-        args_hint="[status|scan|board]",
+        description="SignalDesk status, scan, board, or approve a lead",
+        args_hint="[status|scan|board|approve <id>]",
     )
 
     try:

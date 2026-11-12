@@ -6,7 +6,7 @@
 
 A [Hermes Agent](https://github.com/NousResearch/hermes-agent) plugin that turns **public hiring and launch signals** and **local businesses on an OpenStreetMap map** into one scored, draft-first outreach queue.
 
-Install it, describe your ICP, scan, review the board, approve one lead. **Nothing is sent unless you approve it in an interactive session.** Cron jobs and unattended runs fail closed.
+Install it, describe your ICP, scan, review the board, approve one lead. **Nothing is sent unless you approve it** from the board, Desktop, or `/signaldesk approve <id>`. The model cannot approve a lead. Cron jobs and unattended runs fail closed.
 
 <p align="center">
   <img src="docs/screenshots/01-board-1920.png" alt="SignalDesk pipeline board at 1920×1080, with columns from New through Lost and ICP plus no-key source badges in the header." width="100%">
@@ -26,7 +26,7 @@ A skill can remind the model to “go look at Who is hiring and write some email
 
 SignalDesk is a plugin, not a prompt:
 
-- **Tools** for ICP, scan, **map scan**, list, draft, approve, mark, follow-ups, CSV, sources, a local `.eml`, and the HTML board
+- **Tools** for ICP, scan, **map scan**, list, draft, mark, follow-ups, CSV, sources, a local `.eml`, and the HTML board. Approval is user-only (board, Desktop, or `/signaldesk approve <id>`)
 - A **`pre_tool_call` hook** that blocks send-like tools unless the lead is approved *and* the session is interactive
 - A **slash command** (`/signaldesk`) and a weekday **catch-up blueprint** that only scans and summarizes
 - A **SQLite pipeline** with domain dedup and transparent scores
@@ -98,7 +98,7 @@ Switch to **Map**, type a city and pick a business type (or **Draw area** to dra
 
 | `osm_map` | Local | **LocalLead Map**: OpenStreetMap businesses via [Overpass API](https://wiki.openstreetmap.org/wiki/Overpass_API), geocoded with [Nominatim](https://nominatim.org/). On demand through `signaldesk_map_scan` | No |
 
-`signaldesk_sources` reports enablement and rate-limit notes. Product Hunt stays **off** until you set the token through Hermes `secret_scope` or the environment. **Product Hunt API terms restrict commercial use** without permission — only enable that source if your use is allowed.
+`signaldesk_sources` reports enablement and rate-limit notes. Product Hunt stays **off** until you set the token through Hermes `secret_scope`. **Product Hunt API terms restrict commercial use** without permission — only enable that source if your use is allowed.
 
 BetaList is **not** shipped. Their site terms limit copying and commercial or public reuse of their materials, and API access is case-by-case, so a keyless RSS source would not be a clean fit.
 
@@ -130,7 +130,7 @@ Being a good OSM citizen:
 
 ## Safety model
 
-- **Draft-first.** Tools write drafts only. `signaldesk_approve` is the in-plugin gate and still does not send.
+- **Draft-first.** Tools write drafts only. Approval is user-only (the board, Desktop, or `/signaldesk approve <id>`) and still does not send. The model cannot call an approve tool, and `signaldesk_mark` refuses `stage=approved`.
 - **Sending is a separate, explicit step.** `signaldesk_prepare_send` writes a local `.eml` and a `mailto:` link. There is no third-party mail API.
 - **`pre_tool_call` gate.** Send-like tools (`send_email`, SMTP, Gmail, …) are blocked unless a matching lead is already approved (or later) **and** the session is interactive.
 - **Cron fail-closed.** If `ctx.current_cron_execution()` is set, sends are blocked even for approved leads. The catch-up blueprint only scans and summarizes.
@@ -145,13 +145,14 @@ Being a good OSM citizen:
 | `signaldesk_map_scan` | LocalLead Map: OSM businesses for a city + type or a bbox → scored leads |
 | `signaldesk_list` | Filter by stage or signal type |
 | `signaldesk_draft` | Write a draft, move to `drafted` |
-| `signaldesk_approve` | In-plugin approval gate — still does not send |
 | `signaldesk_prepare_send` | Write a local `.eml` + mailto for an **approved** lead |
-| `signaldesk_mark` | `sent` / `replied` / `won` / `lost`, notes, `followed_up` |
+| `signaldesk_mark` | `sent` / `replied` / `won` / `lost`, notes, `followed_up` (refuses `stage=approved`) |
 | `signaldesk_followups` | Sent leads due a follow-up, with days since contact |
 | `signaldesk_export_csv` | CSV under the plugin data dir |
 | `signaldesk_sources` | List sources, including optional ones that are off |
 | `signaldesk_board` | Regenerate the HTML board |
+
+Approval is not a model tool: use the board or Desktop **Approve** button, or `/signaldesk approve <id>`.
 
 Stages: `new → qualified → drafted → approved → sent → replied / won / lost`.
 
