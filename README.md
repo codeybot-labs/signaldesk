@@ -27,7 +27,7 @@ A skill can remind the model to “go look at Who is hiring and write some email
 SignalDesk is a plugin, not a prompt:
 
 - **Tools** for ICP, scan, **map scan**, list, draft, mark, follow-ups, CSV, sources, a local `.eml`, and the HTML board. Approval is user-only (board, Desktop, or `/signaldesk approve <id>`)
-- A **`pre_tool_call` hook** that blocks send-like tools unless the lead is approved *and* the session is interactive
+- A **`pre_tool_call` hook** that blocks send-like tools unless the lead is approved (or later); all sends are blocked during cron/unattended runs
 - A **slash command** (`/signaldesk`) and a weekday **catch-up blueprint** that only scans and summarizes
 - A **SQLite pipeline** with domain dedup and transparent scores
 - An **interactive HTML board** with a Pipeline view and an **OpenLayers Map view** (what the demo records), and a **Hermes Desktop page** (`desktop/plugin.js`, OpenLayers bundled) that talks to the same backend
@@ -130,9 +130,9 @@ Being a good OSM citizen:
 
 ## Safety model
 
-- **Draft-first.** Tools write drafts only. Approval is user-only (the board, Desktop, or `/signaldesk approve <id>`) and still does not send. The model cannot call an approve tool, and `signaldesk_mark` refuses `stage=approved`.
+- **Draft-first.** Tools write drafts only. Approval is user-only (the board, Desktop, or `/signaldesk approve <id>`) and still does not send. The model cannot call an approve tool, and `signaldesk_mark` refuses `stage=approved` and refuses moving a not-yet-approved lead to `sent`/`replied`/`won`.
 - **Sending is a separate, explicit step.** `signaldesk_prepare_send` writes a local `.eml` and a `mailto:` link. There is no third-party mail API.
-- **`pre_tool_call` gate.** Send-like tools (`send_email`, SMTP, Gmail, …) are blocked unless a matching lead is already approved (or later) **and** the session is interactive.
+- **`pre_tool_call` gate.** Send-like tools (`send_email`, SMTP, Gmail, …) are blocked unless a matching lead is already approved (or later).
 - **Cron fail-closed.** If `ctx.current_cron_execution()` is set, sends are blocked even for approved leads. The catch-up blueprint only scans and summarizes.
 - **Public signals only.** No commit-email harvesting, no SMTP probing (MX is DNS UDP only), no scraping the YC HTML site.
 

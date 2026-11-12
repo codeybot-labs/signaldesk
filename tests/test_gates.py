@@ -6,11 +6,12 @@ import types
 from pathlib import Path
 
 import toolhandlers as tools
+from hooks import make_pre_tool_call
 from icp import save_icp
 from models import ICP
 from pipeline import scan
 from sources.producthunt import ProductHuntSource, _token
-from store import get_lead, list_leads
+from store import get_lead, list_leads, save_lead
 
 
 def _plugin():
@@ -36,6 +37,45 @@ def test_mark_refuses_approved_stage():
     assert result["ok"] is False
     assert "user-only" in result["error"].lower()
     assert get_lead(lead.id).stage == "drafted"
+
+
+class _Interactive:
+    def current_cron_execution(self):
+        return None
+
+
+def test_mark_refuses_sent_from_drafted():
+    lead = _drafted_lead()
+    result = json.loads(tools.signaldesk_mark({"lead_id": lead.id, "stage": "sent"}))
+    assert result["ok"] is False
+    assert "user-only" in result["error"].lower()
+    fresh = get_lead(lead.id)
+    assert fresh.stage == "drafted"
+    assert not fresh.sent_at
+    # The send gate must still treat this lead as unapproved after the refusal.
+    hook = make_pre_tool_call(_Interactive())
+    send = hook("send_email", {"to": fresh.contact or f"hello@{fresh.domain}"}, task_id="t1")
+    assert send is not None
+    assert send["action"] == "block"
+
+
+def test_mark_refuses_sendable_jumps_from_drafted():
+    lead = _drafted_lead()
+    for stage in ("replied", "won"):
+        result = json.loads(tools.signaldesk_mark({"lead_id": lead.id, "stage": stage}))
+        assert result["ok"] is False, stage
+        assert "user-only" in result["error"].lower()
+        assert get_lead(lead.id).stage == "drafted"
+
+
+def test_mark_sendable_transitions_follow_the_real_flow():
+    lead = _drafted_lead()
+    lead.stage = "approved"
+    save_lead(lead)
+    assert json.loads(tools.signaldesk_mark({"lead_id": lead.id, "stage": "sent"}))["ok"] is True
+    assert json.loads(tools.signaldesk_mark({"lead_id": lead.id, "stage": "replied"}))["ok"] is True
+    assert json.loads(tools.signaldesk_mark({"lead_id": lead.id, "stage": "won"}))["ok"] is True
+    assert get_lead(lead.id).stage == "won"
 
 
 def test_slash_approve_and_handler_still_work():

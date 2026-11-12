@@ -7,7 +7,7 @@ SignalDesk is a draft-first lead desk for founders and marketers. It scans publi
 ## Hermes surfaces
 
 - 12 `signaldesk_*` tools (ICP, scan, map_scan, list, draft, approve, mark, follow-ups, CSV export, sources, prepare_send, board)
-- `pre_tool_call` hook: blocks send-like tools for a SignalDesk lead unless that draft is approved and the session is interactive; fails closed during cron/unattended runs
+- `pre_tool_call` hook: blocks send-like tools for a SignalDesk lead unless that draft is approved; fails closed during cron/unattended runs
 - `/signaldesk` slash command
 - Weekday catch-up automation blueprint (scan + summarize only, never sends)
 - Hermes Desktop page (`desktop/plugin.js` + `dashboard/plugin_api.py`, imports only the SDK + react; OpenLayers 10.5.0 is bundled inline with its JSONP loader stubbed) and an interactive local HTML board with Pipeline and Map views

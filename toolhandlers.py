@@ -19,6 +19,17 @@ from pipeline import scan as run_scan
 from sources import list_source_info
 from store import counts_by_stage, get_lead, list_leads, save_lead
 
+# A lead may only move within the sendable stages, never into them from outside:
+# sent needs an approved lead, replied needs sent, won needs sent/replied.
+# Re-marks inside a sendable stage stay allowed (idempotent, repeat outreach).
+# Otherwise one model turn could mark a drafted lead sent and the send gates
+# in hooks.py would treat it as user-approved.
+_STAGE_ALLOWED_FROM = {
+    "sent": {"approved", "sent", "replied"},
+    "replied": {"sent", "replied"},
+    "won": {"sent", "replied", "won"},
+}
+
 # Set by register() so drafts can use the host LLM when present.
 _CTX: Any = None
 
@@ -176,6 +187,14 @@ def signaldesk_mark(args: dict, **kwargs) -> str:
                 )
             if stage not in STAGES:
                 return _err(f"Unknown stage {stage!r}", allowed=list(STAGES))
+            allowed_from = _STAGE_ALLOWED_FROM.get(stage)
+            if allowed_from is not None and lead.stage not in allowed_from:
+                return _err(
+                    "Approval is user-only. A lead is marked sent/replied/won only after the user approved "
+                    "it and sent the outreach. Use the board, Desktop, or /signaldesk approve <id>.",
+                    lead_id=lead.id,
+                    stage=lead.stage,
+                )
             lead.stage = stage
             if stage == "sent" and not lead.sent_at:
                 lead.sent_at = _now()

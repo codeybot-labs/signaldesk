@@ -98,7 +98,7 @@ MARK = {
         "type": "object",
         "properties": {
             "lead_id": {"type": "string"},
-            "stage": {"type": "string", "description": "sent|replied|won|lost (also allowed: qualified|drafted). stage=approved is refused; approval is user-only."},
+            "stage": {"type": "string", "description": "sent|replied|won|lost (also allowed: qualified|drafted). A lead reaches sent/replied/won only from a sendable stage (sent from approved, replied from sent, won from sent/replied); earlier jumps are refused. stage=approved is refused; approval is user-only."},
             "notes": {"type": "string"},
             "followed_up": {"type": "boolean", "description": "Record that you sent a follow-up today (resets the follow-up timer on a sent lead)."},
         },

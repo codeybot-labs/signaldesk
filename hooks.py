@@ -87,7 +87,7 @@ def make_pre_tool_call(ctx: Any):
                     "action": "block",
                     "message": (
                         "SignalDesk blocked a send during a cron/unattended run. "
-                        "Outreach is draft-first and must be approved and sent in an interactive session."
+                        "Outreach is draft-first and must be approved and sent by the user outside this run."
                     ),
                 }
             args = args or {}
